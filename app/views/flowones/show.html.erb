@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Flowlist:</b>
+  <%= @flowone.flowlist_id %>
+</p>
+
+<p>
+  <b>Flowlist name:</b>
+  <%= @flowone.flowlist_name %>
+</p>
+
+<p>
+  <b>Customer:</b>
+  <%= @flowone.customer_id %>
+</p>
+
+<p>
+  <b>Customer fname:</b>
+  <%= @flowone.customer_fname %>
+</p>
+
+<p>
+  <b>Customer lname:</b>
+  <%= @flowone.customer_lname %>
+</p>
+
+
+<%= link_to 'Edit', edit_flowone_path(@flowone) %> |
+<%= link_to 'Back', flowones_path %>

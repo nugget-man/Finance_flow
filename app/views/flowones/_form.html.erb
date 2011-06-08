@@ -1,0 +1,37 @@
+<%= form_for(@flowone) do |f| %>
+  <% if @flowone.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@flowone.errors.count, "error") %> prohibited this flowone from being saved:</h2>
+
+      <ul>
+      <% @flowone.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :flowlist_id %><br />
+    <%= f.text_field :flowlist_id %>
+  </div>
+  <div class="field">
+    <%= f.label :flowlist_name %><br />
+    <%= f.text_field :flowlist_name %>
+  </div>
+  <div class="field">
+    <%= f.label :customer_id %><br />
+    <%= f.text_field :customer_id %>
+  </div>
+  <div class="field">
+    <%= f.label :customer_fname %><br />
+    <%= f.text_field :customer_fname %>
+  </div>
+  <div class="field">
+    <%= f.label :customer_lname %><br />
+    <%= f.text_field :customer_lname %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

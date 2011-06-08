@@ -1,0 +1,23 @@
+<h1>Listing flowlists</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @flowlists.each do |flowlist| %>
+  <tr>
+    <td><%= flowlist.name %></td>
+    <td><%= link_to 'Show', flowlist %></td>
+    <td><%= link_to 'Edit', edit_flowlist_path(flowlist) %></td>
+    <td><%= link_to 'Destroy', flowlist, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Flowlist', new_flowlist_path %>

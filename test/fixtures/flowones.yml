@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  flowlist_id: 1
+  flowlist_name: MyString
+  customer_id: 1
+  customer_fname: MyString
+  customer_lname: MyString
+
+two:
+  flowlist_id: 1
+  flowlist_name: MyString
+  customer_id: 1
+  customer_fname: MyString
+  customer_lname: MyString

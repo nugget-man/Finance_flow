@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  fname: MyString
+  lname: MyString
+  step: 1
+  salesman: MyString
+
+two:
+  fname: MyString
+  lname: MyString
+  step: 1
+  salesman: MyString
