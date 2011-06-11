@@ -1,8 +1,13 @@
 Financeflow2::Application.routes.draw do
 
-  devise_for :users
 
-  resources :ranks
+
+
+  get "comments/get_post"
+
+  get "comments/index"
+
+  devise_for :users
 
   get "remote/new"
 
@@ -16,14 +21,9 @@ Financeflow2::Application.routes.draw do
 
   resources :flowlists
 
-  resources :customers
-
-  get "log_out" => "sessions#destroy", :as => "log_out"
-  get "log_in" => "sessions#new", :as => "log_in"
-  get "sign_up" => "users#new", :as => "sign_up"
-  root :to => "users#new"
-  resources :users
-  resources :sessions
+  resources :customers, :has_many => :comments
+  resources :comments, :path_prefix => '/:commentable_type/:commentable_id'
+  root :to => "customers#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

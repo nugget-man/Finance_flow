@@ -1,6 +1,7 @@
 class FlowlistsController < ApplicationController
   # GET /flowlists
   # GET /flowlists.xml
+  before_filter :authenticate_user!
   def index
     @flowlists = Flowlist.all
 

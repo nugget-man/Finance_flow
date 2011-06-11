@@ -1,8 +1,10 @@
 class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.xml
+  before_filter :authenticate_user!
+  helper_method :sort_column, :sort_direction
   def index
-    @customers = Customer.all
+    @customers = Customer.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -35,6 +37,8 @@ class CustomersController < ApplicationController
   # GET /customers/1/edit
   def edit
     @customer = Customer.find(params[:id])
+    # commentable = Customer.create
+    # commentable.comments.create(:title => params[:title], :comment => params[:comment])
   end
 
   # POST /customers
@@ -79,5 +83,12 @@ class CustomersController < ApplicationController
       format.html { redirect_to(customers_url) }
       format.xml  { head :ok }
     end
+  end
+  private
+  def sort_column
+    Customer.column_names.include?(params[:sort]) ? params[:sort] : "updated_at"
+  end
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end

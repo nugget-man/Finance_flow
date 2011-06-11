@@ -1,0 +1,119 @@
+.search th .asc {
+  background-image:url("/images/asc_arrow.gif");
+  background-repeat:no-repeat;
+  background-position:top right
+}
+.search th .desc {
+  background-image:url("/images/desc_arrow.gif");
+  background-repeat:no-repeat;
+  background-position:top right;
+}
+.search
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	margin: 10px;
+    margin-color: #039;
+	width: 640px;
+
+	border-collapse: collapse;
+	text-align: left;
+}
+#searchtitle {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 16pt;
+    color: #039;
+
+}
+
+.search th
+{
+	font-size: 14px;
+	font-weight: normal;
+	color: #039;
+	padding: 10px 8px;
+	border-bottom: 2px solid #6678b1;
+}
+.search td
+{
+	border-bottom: 1px solid #ccc;
+	color: #669;
+	padding: 6px 8px;
+}
+.search tbody tr:hover td
+{
+	color: #009;
+    border-top:-50px;
+}
+#logo {
+
+}
+#bodyid
+{
+	text-align: center;
+    background: #102b44;
+}
+
+.user_nav{
+    background-color:#fff;
+    text-align:center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50em;
+
+}
+.financelinks{
+    text-align:left;
+    position:absolute;
+    right:10px;
+    top:87px;
+    background-color:#fff;
+    width:220px;
+}
+.financelinks li{
+    text-decoration:underline;
+}
+.remote{
+    position:absolute;
+    left:10px;
+    top:87px;
+    background-color:#fff;
+    border-left:10px;
+    border-right:10px;
+    border-color:#fff;
+    width:180px;
+}
+
+.maincontent
+{
+	margin-left: auto;
+	margin-right: auto;
+	width: 55em;
+	text-align: center;
+    background-color:#fff;
+}
+
+
+.roundedcornr_box_283612 {
+   background: #ffffff;
+}
+.roundedcornr_top_283612 div {
+   background: url(/images/roundedcornr_283612_tl.png) no-repeat top left;
+}
+.roundedcornr_top_283612 {
+   background: url(/images/roundedcornr_283612_tr.png) no-repeat top right;
+}
+.roundedcornr_bottom_283612 div {
+   background: url(/images/roundedcornr_283612_bl.png) no-repeat bottom left;
+}
+.roundedcornr_bottom_283612 {
+   background: url(/images/roundedcornr_283612_br.png) no-repeat bottom right;
+}
+
+.roundedcornr_top_283612 div, .roundedcornr_top_283612,
+.roundedcornr_bottom_283612 div, .roundedcornr_bottom_283612 {
+   width: 100%;
+   height: 16px;
+   font-size: 1px;
+}
+.roundedcornr_content_283612 { margin: 0 16px; }

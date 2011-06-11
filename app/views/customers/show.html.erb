@@ -1,24 +1,19 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>Fname:</b>
-  <%= @customer.fname %>
-</p>
-
-<p>
-  <b>Lname:</b>
-  <%= @customer.lname %>
-</p>
-
-<p>
-  <b>Step:</b>
-  <%= @customer.step %>
-</p>
-
-<p>
-  <b>Salesman:</b>
-  <%= @customer.salesman %>
-</p>
+<div style="margin-left:auto; margin-right:auto; text-align:center; width:10em">
+<table style="text-align:left">
+  <tr>
+    <td>Customer Name:</td><td><%= @customer.lname.capitalize %>, <%= @customer.fname.capitalize %></td>
+  </tr>
+  <tr>
+    <td>Step:</td><td><%= @customer.step %></td>
+  </tr>
+  <tr>
+    <td>Salesman:</td><td><%= @customer.salesman %></td>
+  </tr>
+</table>
+</div>
+<a><h2>Move this customer into Finance!</h2></a>
+<%= render :partial => 'comments/form', :locals => {:commentable => @customer} %>
 
 
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
