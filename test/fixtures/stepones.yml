@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  customer_id: 1
+  customer_fname: MyString
+  customer_lname: MyString
+  title: MyString
+  creditcheck: false
+  credexp: 1
+  credequ: 1
+  credtra: 1
+  lender: false
+
+two:
+  customer_id: 1
+  customer_fname: MyString
+  customer_lname: MyString
+  title: MyString
+  creditcheck: false
+  credexp: 1
+  credequ: 1
+  credtra: 1
+  lender: false

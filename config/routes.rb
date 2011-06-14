@@ -3,6 +3,8 @@ Financeflow2::Application.routes.draw do
 
 
 
+  resources :stepones
+
   get "comments/get_post"
 
   get "comments/index"

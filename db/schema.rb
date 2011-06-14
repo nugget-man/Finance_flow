@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110610223949) do
+ActiveRecord::Schema.define(:version => 20110611182554) do
 
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""
@@ -66,6 +66,20 @@ ActiveRecord::Schema.define(:version => 20110610223949) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "stepones", :force => true do |t|
+    t.integer  "customer_id"
+    t.string   "customer_fname"
+    t.string   "customer_lname"
+    t.string   "title"
+    t.boolean  "creditcheck"
+    t.integer  "credexp"
+    t.integer  "credequ"
+    t.integer  "credtra"
+    t.boolean  "lender"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

@@ -1,0 +1,28 @@
+<%= form_for(Stepone.new) do%>
+  <%= hidden_field_tag params[:custid], :customer_id %>
+  <%= hidden_field_tag @firstname, :customer_fname %>
+  <%= hidden_field_tag @lastname, :customer_lname %>
+  <div class="field">
+    <%= label_tag :creditcheck, 'Credit Check Performed?' %><br />
+    <%= check_box_tag :creditcheck %>
+  </div>
+    <div class="field">
+    <%= label_tag :credexp, 'Experian Score' %><br />
+    <%= number_field_tag :credexp,'', :max => '800', :size => '3'%>
+  </div>
+  <div class="field">
+    <%= label_tag :credequ, 'Equifax Score' %><br />
+    <%= number_field_tag :credequ,'', :max => '800', :size => '3' %>
+  </div>
+  <div class="field">
+    <%= label_tag :credtra, 'Transunion Score' %><br />
+    <%= number_field_tag :credtra,'', :max => '800', :size => '3' %>
+  </div>
+  <div class="field">
+    <%= label_tag :lender, 'Approved by lender?' %><br />
+    <%= check_box_tag :lender %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Complete" %>
+  </div>
+<% end %>
