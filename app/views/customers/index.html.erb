@@ -11,7 +11,7 @@
 <% end %>
 <table class="search">
   <tr>
-    <th><%= sortable "id", "Customer #"%>'</th>
+    <th><%= sortable "id", "Customer #"%></th>
     <th><%= sortable "lname", "Last" %>, <%= sortable "fname", "First" %></th>
     <th><%= sortable "step" %></th>
     <th><%= sortable "updated_at", "Updated at" %></th>
@@ -23,13 +23,12 @@
 <% @customers.each do |customer| %>
   <tr>
     <td><%= customer.id %></td>
-    <td><%= customer.lname %>, <%= customer.fname %></td>
+    <td><%= customer.lname.capitalize %>, <%= customer.fname.capitalize %></td>
     <td><%= customer.step %></td>
     <td><%= customer.updated_at %></td>
     <td><%= link_to 'Show', customer %></td>
     <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-    <td><% form_tag new_stepone_path, :method => 'get' do%>
-      <%= hidden_field_tag 'custid', customer.id  %>
+    <td><% form_tag finance_path(customer.id), :method => 'get' do%>
       <%= submit_tag "Finance", :name => nil%>
     <% end %>
     </td>

@@ -5,11 +5,12 @@ class CustomersController < ApplicationController
   helper_method :sort_column, :sort_direction
   def index
     @customers = Customer.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])
-
+   # @currentstep = current_step(id)
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @customers }
     end
+
   end
 
   # GET /customers/1
@@ -84,11 +85,52 @@ class CustomersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def currentstep
+    @step = Customer.find_by_id(params[:id]).step
+    if @step === nil
+      session[:custid] = params[:id]
+      redirect_to step1_path(params[:id])
+    end
+    if @step === 0
+      session[:custid] = params[:id]
+
+      redirect_to step1_path(params[:id])
+    end
+    if @step === 1
+      session[:custid] = params[:id]
+      if Stepone.find_by_customer_id(params[:id]).empty?
+        redirect_to step1edit_path(params[:id])
+      else
+        redirect_to step1edit_path(params[:id])
+      end
+    end
+  end
+
   private
+
   def sort_column
     Customer.column_names.include?(params[:sort]) ? params[:sort] : "updated_at"
   end
+
+
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
+
+
+
+
 end
+# def currentstep
+#     @customer = Customer.find_by_id(params[:custid])
+#     @step = @customer.step
+#     if @step === 0
+#       render new_stepone_path
+#     end
+#     if @step === 1
+#       if Stepone.find_by_customer_id(params[:custid])
+#         render edit_stepone_path
+#       end
+#     end
+#   end

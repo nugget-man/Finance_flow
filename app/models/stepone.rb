@@ -1,3 +1,4 @@
 class Stepone < ActiveRecord::Base
-  has_many :customers
+  belongs_to :customer
+  attr_accessible :title, :customer_id
 end
