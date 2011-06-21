@@ -10,15 +10,15 @@
     <div class="field">
     <%= label_tag :credexp, 'Experian Score' %><br />
     <%= f.number_field(:credexp, :value => @stepone.credexp)%>
-  </div>
+  </div><br>
   <div class="field">
     <%= label_tag :credequ, 'Equifax Score' %><br />
     <%= f.number_field(:credequ, :value => @stepone.credequ) %>
-  </div>
+  </div><br>
   <div class="field">
     <%= label_tag :credtra, 'Transunion Score' %><br />
     <%= f.number_field(:credtra, :value => @stepone.credtra) %>
-  </div>
+  </div><br>
   <div class="field">
     <%= label_tag :lender, 'Approved by lender?' %><br />
     <%= f.check_box :lender %>

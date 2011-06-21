@@ -1,8 +1,7 @@
 class SteponesController < ApplicationController
   # GET /stepones
   # GET /stepones.xml
-  before_filter :cust_info_population
-  helper_method :cust_info_population
+
   def index
     @stepones = Stepone.all
 
@@ -57,7 +56,7 @@ class SteponesController < ApplicationController
   # POST /stepones
   # POST /stepones.xml
   def create
-
+    @stepone = Stepone.new
     respond_to do |format|
       if @stepone.save
         format.html { redirect_to(@stepone, :notice => 'Record was successfully created.') }
@@ -99,7 +98,8 @@ class SteponesController < ApplicationController
 
 
 private
-  def cust_info_population
-    @customer = Customer.find(params[:id])
-  end
+
+
+
+
 end

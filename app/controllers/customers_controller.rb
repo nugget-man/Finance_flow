@@ -99,7 +99,7 @@ class CustomersController < ApplicationController
     end
     if @step === 1
       session[:custid] = params[:id]
-      if Stepone.find_by_customer_id(params[:id]).empty?
+      if Stepone.find_by_customer_id(params[:id]).title === 'In Progress'
         redirect_to step1edit_path(params[:id])
       else
         redirect_to step1edit_path(params[:id])
