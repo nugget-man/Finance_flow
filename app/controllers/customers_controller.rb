@@ -96,14 +96,37 @@ class CustomersController < ApplicationController
       session[:custid] = params[:id]
 
       redirect_to step1_path(params[:id])
-    end
-    if @step === 1
-      session[:custid] = params[:id]
+    elsif @step === 1
       if Stepone.find_by_customer_id(params[:id]).title === 'In Progress'
         redirect_to step1edit_path(params[:id])
       else
         redirect_to step1edit_path(params[:id])
       end
+    elsif @step === 2
+      if Steptwo.find_by_customer_id(params[:id]).title
+        if Steptwo.find_by_customer_id(params[:id]).title === 'In Progress'
+          redirect_to step2edit_path(params[:id])
+        elsif Steptwo.find_by_customer_id(params[:id]).title === 'Complete'
+          # add query string to update title field of customer
+          redirect_to step3_path(params[:id])
+        end
+      end
+    elsif @step === 3
+
+    elsif @step === 4
+
+    elsif @step === 5
+
+    elsif @step === 6
+
+    elsif @step === 7
+
+    elsif @step === 8
+
+    elsif @step === 9
+
+    elsif @step === 10
+
     end
   end
 
