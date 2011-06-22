@@ -1,7 +1,8 @@
 class SteponesController < ApplicationController
+  before_filter :authenticate_user!
+
   # GET /stepones
   # GET /stepones.xml
-
   def index
     @stepones = Stepone.all
 

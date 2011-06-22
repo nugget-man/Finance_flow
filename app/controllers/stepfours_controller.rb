@@ -1,4 +1,6 @@
 class StepfoursController < ApplicationController
+  before_filter :authenticate_user!
+
   # GET /stepfours
   # GET /stepfours.xml
   def index

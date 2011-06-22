@@ -1,6 +1,6 @@
 
   class CommentsController < ApplicationController
-    before_filter :load_commentable
+    before_filter :authenticate_user!, :load_commentable
     def create
       @comment = @commentable.comments.build(:title => params[:title], :comment => params[:comment])
       @comment.user = current_user

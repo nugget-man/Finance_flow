@@ -1,4 +1,6 @@
 class StepsixesController < ApplicationController
+  before_filter :authenticate_user!
+
   # GET /stepsixes
   # GET /stepsixes.xml
   def index

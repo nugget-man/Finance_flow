@@ -4,7 +4,16 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   ROLES = %w[admin management finance sales]
-  has_many :stepones
+  has_many :steptwo
+  has_many :stepthree
+  has_many :stepone
+  has_many :stepfour
+  has_many :stepfive
+  has_many :stepsix
+  has_many :stepseven
+  has_many :stepeight
+  has_many :stepnine
+  has_many :stepten
   has_many :comments
   has_and_belongs_to_many :roles
   def is?(role)

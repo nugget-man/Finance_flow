@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110611182554) do
+ActiveRecord::Schema.define(:version => 20110622172710) do
 
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""
@@ -41,16 +41,6 @@ ActiveRecord::Schema.define(:version => 20110611182554) do
     t.datetime "updated_at"
   end
 
-  create_table "flowones", :force => true do |t|
-    t.integer  "flowlist_id"
-    t.string   "flowlist_name"
-    t.integer  "customer_id"
-    t.string   "customer_fname"
-    t.string   "customer_lname"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -67,6 +57,52 @@ ActiveRecord::Schema.define(:version => 20110611182554) do
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
+  create_table "stepeights", :force => true do |t|
+    t.integer  "customer_id"
+    t.string   "customer_fname"
+    t.string   "customer_lname"
+    t.string   "title"
+    t.string   "appraisal"
+    t.integer  "phone"
+    t.boolean  "complete"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stepfives", :force => true do |t|
+    t.integer  "customer_id"
+    t.string   "customer_fname"
+    t.string   "customer_lname"
+    t.string   "title"
+    t.boolean  "complete"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stepfours", :force => true do |t|
+    t.integer  "customer_id"
+    t.string   "customer_fname"
+    t.string   "customer_lname"
+    t.string   "title"
+    t.boolean  "complete"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stepnines", :force => true do |t|
+    t.integer  "customer_id"
+    t.string   "customer_fname"
+    t.string   "customer_lname"
+    t.string   "title"
+    t.boolean  "irrelevent"
+    t.boolean  "refurb"
+    t.boolean  "survey"
+    t.boolean  "utilities"
+    t.boolean  "complete"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "stepones", :force => true do |t|
     t.integer  "customer_id"
     t.string   "customer_fname"
@@ -77,6 +113,60 @@ ActiveRecord::Schema.define(:version => 20110611182554) do
     t.integer  "credequ"
     t.integer  "credtra"
     t.boolean  "lender"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stepsevens", :force => true do |t|
+    t.integer  "customer_id"
+    t.string   "customer_fname"
+    t.string   "customer_lname"
+    t.string   "title"
+    t.string   "survey"
+    t.integer  "phone"
+    t.boolean  "complete"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stepsixes", :force => true do |t|
+    t.integer  "customer_id"
+    t.string   "customer_fname"
+    t.string   "customer_lname"
+    t.string   "title"
+    t.string   "titlecompany"
+    t.integer  "phone"
+    t.boolean  "complete"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "steptens", :force => true do |t|
+    t.integer  "customer_id"
+    t.string   "customer_fname"
+    t.string   "customer_lname"
+    t.string   "title"
+    t.boolean  "complete"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stepthrees", :force => true do |t|
+    t.integer  "customer_id"
+    t.string   "customer_fname"
+    t.string   "customer_lname"
+    t.string   "title"
+    t.boolean  "complete"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "steptwos", :force => true do |t|
+    t.integer  "customer_id"
+    t.string   "customer_fname"
+    t.string   "customer_lname"
+    t.string   "title"
+    t.boolean  "complete"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
