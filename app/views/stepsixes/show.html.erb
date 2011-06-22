@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Customer:</b>
+  <%= @stepsix.customer_id %>
+</p>
+
+<p>
+  <b>Customer fname:</b>
+  <%= @stepsix.customer_fname %>
+</p>
+
+<p>
+  <b>Customer lname:</b>
+  <%= @stepsix.customer_lname %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @stepsix.title %>
+</p>
+
+<p>
+  <b>Titlecompany:</b>
+  <%= @stepsix.titlecompany %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @stepsix.phone %>
+</p>
+
+<p>
+  <b>Complete:</b>
+  <%= @stepsix.complete %>
+</p>
+
+
+<%= link_to 'Edit', edit_stepsix_path(@stepsix) %> |
+<%= link_to 'Back', stepsixes_path %>

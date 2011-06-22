@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Customer:</b>
+  <%= @stepthree.customer_id %>
+</p>
+
+<p>
+  <b>Customer fname:</b>
+  <%= @stepthree.customer_fname %>
+</p>
+
+<p>
+  <b>Customer lname:</b>
+  <%= @stepthree.customer_lname %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @stepthree.title %>
+</p>
+
+<p>
+  <b>Complete:</b>
+  <%= @stepthree.complete %>
+</p>
+
+
+<%= link_to 'Edit', edit_stepthree_path(@stepthree) %> |
+<%= link_to 'Back', stepthrees_path %>

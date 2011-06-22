@@ -1,0 +1,41 @@
+<h1>Listing stepnines</h1>
+
+<table>
+  <tr>
+    <th>Customer</th>
+    <th>Customer fname</th>
+    <th>Customer lname</th>
+    <th>Title</th>
+    <th>Irrelevent</th>
+    <th>Refurb</th>
+    <th>Survey</th>
+    <th>Title</th>
+    <th>Utilities</th>
+    <th>Complete</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @stepnines.each do |stepnine| %>
+  <tr>
+    <td><%= stepnine.customer_id %></td>
+    <td><%= stepnine.customer_fname %></td>
+    <td><%= stepnine.customer_lname %></td>
+    <td><%= stepnine.title %></td>
+    <td><%= stepnine.irrelevent %></td>
+    <td><%= stepnine.refurb %></td>
+    <td><%= stepnine.survey %></td>
+    <td><%= stepnine.title %></td>
+    <td><%= stepnine.utilities %></td>
+    <td><%= stepnine.complete %></td>
+    <td><%= link_to 'Show', stepnine %></td>
+    <td><%= link_to 'Edit', edit_stepnine_path(stepnine) %></td>
+    <td><%= link_to 'Destroy', stepnine, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Stepnine', new_stepnine_path %>

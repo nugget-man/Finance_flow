@@ -1,0 +1,35 @@
+<h1>Listing stepsixes</h1>
+
+<table>
+  <tr>
+    <th>Customer</th>
+    <th>Customer fname</th>
+    <th>Customer lname</th>
+    <th>Title</th>
+    <th>Titlecompany</th>
+    <th>Phone</th>
+    <th>Complete</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @stepsixes.each do |stepsix| %>
+  <tr>
+    <td><%= stepsix.customer_id %></td>
+    <td><%= stepsix.customer_fname %></td>
+    <td><%= stepsix.customer_lname %></td>
+    <td><%= stepsix.title %></td>
+    <td><%= stepsix.titlecompany %></td>
+    <td><%= stepsix.phone %></td>
+    <td><%= stepsix.complete %></td>
+    <td><%= link_to 'Show', stepsix %></td>
+    <td><%= link_to 'Edit', edit_stepsix_path(stepsix) %></td>
+    <td><%= link_to 'Destroy', stepsix, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Stepsix', new_stepsix_path %>

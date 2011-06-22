@@ -1,0 +1,15 @@
+<%= simple_form_for(@steptwo) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :customer_id %>
+    <%= f.input :customer_fname %>
+    <%= f.input :customer_lname %>
+    <%= f.input :title %>
+    <%= f.input :complete %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

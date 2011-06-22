@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  customer_id: 1
+  customer_fname: MyString
+  customer_lname: MyString
+  title: MyString
+  survey: MyString
+  phone: 1
+  complete: false
+
+two:
+  customer_id: 1
+  customer_fname: MyString
+  customer_lname: MyString
+  title: MyString
+  survey: MyString
+  phone: 1
+  complete: false

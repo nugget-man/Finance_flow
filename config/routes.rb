@@ -1,4 +1,22 @@
 Financeflow2::Application.routes.draw do
+  resources :steptens
+
+  resources :stepnines
+
+  resources :stepeights
+
+  resources :stepsevens
+
+  resources :stepsixes
+
+  resources :stepfives
+
+  resources :stepfours
+
+  resources :stepthrees
+
+  resources :steptwos
+
   match 'finance/:id' => 'customers#currentstep', :as => 'finance'
   match 'step1/:id' => 'stepones#new', :as => 'step1'
   match 'step1/edit/:id' => 'stepones#edit', :as => 'step1edit'

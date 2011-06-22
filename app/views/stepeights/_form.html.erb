@@ -1,0 +1,17 @@
+<%= simple_form_for(@stepeight) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :customer_id %>
+    <%= f.input :customer_fname %>
+    <%= f.input :customer_lname %>
+    <%= f.input :title %>
+    <%= f.input :appraisal %>
+    <%= f.input :phone %>
+    <%= f.input :complete %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

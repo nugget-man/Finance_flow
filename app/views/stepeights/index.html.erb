@@ -1,0 +1,35 @@
+<h1>Listing stepeights</h1>
+
+<table>
+  <tr>
+    <th>Customer</th>
+    <th>Customer fname</th>
+    <th>Customer lname</th>
+    <th>Title</th>
+    <th>Appraisal</th>
+    <th>Phone</th>
+    <th>Complete</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @stepeights.each do |stepeight| %>
+  <tr>
+    <td><%= stepeight.customer_id %></td>
+    <td><%= stepeight.customer_fname %></td>
+    <td><%= stepeight.customer_lname %></td>
+    <td><%= stepeight.title %></td>
+    <td><%= stepeight.appraisal %></td>
+    <td><%= stepeight.phone %></td>
+    <td><%= stepeight.complete %></td>
+    <td><%= link_to 'Show', stepeight %></td>
+    <td><%= link_to 'Edit', edit_stepeight_path(stepeight) %></td>
+    <td><%= link_to 'Destroy', stepeight, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Stepeight', new_stepeight_path %>
