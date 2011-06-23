@@ -27,7 +27,7 @@ class SteptwosController < ApplicationController
   # GET /steptwos/new.xml
   def new
     @steptwo = Steptwo.new
-
+    @customer = Customer.find_by_id(params[:id])
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @steptwo }
@@ -46,8 +46,7 @@ class SteptwosController < ApplicationController
 
     respond_to do |format|
       if @steptwo.save
-        format.html { redirect_to(@steptwo, :notice => 'Steptwo was successfully created.') }
-        format.xml  { render :xml => @steptwo, :status => :created, :location => @steptwo }
+        format.html { redirect_to(root_path, :notice => 'Steptwo was successfully created.') }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @steptwo.errors, :status => :unprocessable_entity }
@@ -62,8 +61,7 @@ class SteptwosController < ApplicationController
 
     respond_to do |format|
       if @steptwo.update_attributes(params[:steptwo])
-        format.html { redirect_to(@steptwo, :notice => 'Steptwo was successfully updated.') }
-        format.xml  { head :ok }
+        format.html { redirect_to(root_path, :notice => 'Steptwo was successfully updated.') }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @steptwo.errors, :status => :unprocessable_entity }

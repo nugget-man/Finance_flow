@@ -1,34 +1,23 @@
 <% #This code creates the first of many Flowsteps. The secret is the in progress entered in the title fields%>
 
-<p>For Customer: <%= @firstname%> <%= @lastname%></p>
+<p>For Customer: <%= @customer.fname%> <%= @customer.lname%></p>
 
-<%= form_for(Stepone.new) do |f| %>
-  <%= f.hidden_field :customer_id, :value => @custid %>
-  <%= f.hidden_field :customer_fname, :value => @firstname %>
-  <%= f.hidden_field :customer_lname, :value => @lastname %>
-  <%= f.hidden_field :title, :value => 'In Progress'%>
-  <div class="field">
-    <%= label_tag :creditcheck, 'Credit Check Performed?' %><br />
-    <%= f.check_box(:creditcheck, :value => nil) %>
-  </div><table><tr><td>
-    <div class="field">
-    <%= label_tag :credexp, 'Experian Score' %><br />
-    <%= f.number_field(:credexp, :value => nil)%>
-  </div></td><td>
-  <div class="field">
-    <%= label_tag :credequ, 'Equifax Score' %><br />
-    <%= f.number_field(:credequ, :value => nil) %>
-  </div></td><td>
-  <div class="field">
-    <%= label_tag :credtra, 'Transunion Score' %><br />
-    <%= f.number_field(:credtra, :value => nil) %>
-  </div></td></tr></table>
-  <p>Check this box only after the lender has received the customer info.</p>
-  <div class="field">
-    <%= label_tag :lender, 'Approved by lender?' %><br />
-    <%= f.check_box :lender %>
+<%= simple_form_for(@stepone) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :customer_id,    :as => :hidden, :input_html => {:value => @customer.id}     %>
+    <%= f.input :customer_fname, :as => :hidden, :input_html => {:value => @customer.fname}  %>
+    <%= f.input :customer_lname, :as => :hidden, :input_html => {:value => @customer.lname}  %>
+    <%= f.input :title,          :as => :hidden, :input_html => {:value => 'In Progress'} %>
+    <%= f.input :creditcheck, :label => 'Check after performing a credit check' %>
+    <%= f.input :credexp,     :label => 'Experian Score' %>
+    <%= f.input :credequ,     :label => 'Equifax Score' %>
+    <%= f.input :credtra,     :label => 'Transunion Score' %>
+    <%= f.input :complete,    :label => 'Check this box when the loan has been approved. This will complete the step.'%>
   </div>
+
   <div class="actions">
-    <%= f.submit "Complete" %>
+    <%= f.button :submit %>
   </div>
 <% end %>

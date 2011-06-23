@@ -46,8 +46,7 @@ class StepfoursController < ApplicationController
 
     respond_to do |format|
       if @stepfour.save
-        format.html { redirect_to(@stepfour, :notice => 'Stepfour was successfully created.') }
-        format.xml  { render :xml => @stepfour, :status => :created, :location => @stepfour }
+        format.html { redirect_to(root_path, :notice => 'Stepfour was successfully created.') }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @stepfour.errors, :status => :unprocessable_entity }
@@ -62,8 +61,7 @@ class StepfoursController < ApplicationController
 
     respond_to do |format|
       if @stepfour.update_attributes(params[:stepfour])
-        format.html { redirect_to(@stepfour, :notice => 'Stepfour was successfully updated.') }
-        format.xml  { head :ok }
+        format.html { redirect_to(root_path, :notice => 'Stepfour was successfully updated.') }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @stepfour.errors, :status => :unprocessable_entity }

@@ -26,15 +26,8 @@ class SteponesController < ApplicationController
   # GET /stepones/new
   # GET /stepones/new.xml
   def new
-    if params[:id]
-      @custid = params[:id]
-    else
-      @custid = session[:custid]
-    end
     @stepone = Stepone.new
-    @lastname = Customer.find_by_id(@custid).lname
-    @firstname = Customer.find_by_id(@custid).fname
-    @stepone = Stepone.new(params[:stepone])
+    @customer = Customer.find_by_id(params[:id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,24 +37,17 @@ class SteponesController < ApplicationController
 
   # GET /stepones/1/edit
   def edit
-    @stepone = Stepone.new
-    if Stepone.exists?
-      @id = @stepone.customer_id
-      @customer = Customer.find_by_id(@id)
-    end
-    @custid = @customer.id
-    @lastname = @customer.lname
-    @firstname = @customer.fname
+    @stepone = Stepone.find(params[:id])
+    @customer = Customer.find_by_id(@stepone.customer_id)
   end
 
   # POST /stepones
   # POST /stepones.xml
   def create
-    @stepone = Stepone.new
+    @stepone = Stepone.new(params[:stepone])
     respond_to do |format|
       if @stepone.save
-        format.html { redirect_to(@stepone, :notice => 'Record was successfully created.') }
-        format.xml  { render :xml => @stepone, :status => :created, :location => @stepone }
+        format.html { redirect_to(root_path, :notice => 'Record was successfully created.') }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @stepone.errors, :status => :unprocessable_entity }
@@ -76,8 +62,7 @@ class SteponesController < ApplicationController
 
     respond_to do |format|
       if @stepone.update_attributes(params[:stepone])
-        format.html { redirect_to(@stepone, :notice => 'Record was successfully updated.') }
-        format.xml  { head :ok }
+        format.html { redirect_to(root_path, :notice => 'Record was successfully updated.') }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @stepone.errors, :status => :unprocessable_entity }

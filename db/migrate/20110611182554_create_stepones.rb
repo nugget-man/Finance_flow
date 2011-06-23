@@ -9,7 +9,7 @@ class CreateStepones < ActiveRecord::Migration
       t.integer :credexp
       t.integer :credequ
       t.integer :credtra
-      t.boolean :lender
+      t.boolean :complete
 
       t.timestamps
     end

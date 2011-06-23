@@ -46,8 +46,7 @@ class StepeightsController < ApplicationController
 
     respond_to do |format|
       if @stepeight.save
-        format.html { redirect_to(@stepeight, :notice => 'Stepeight was successfully created.') }
-        format.xml  { render :xml => @stepeight, :status => :created, :location => @stepeight }
+        format.html { redirect_to(root_path, :notice => 'Stepeight was successfully created.') }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @stepeight.errors, :status => :unprocessable_entity }
@@ -62,8 +61,7 @@ class StepeightsController < ApplicationController
 
     respond_to do |format|
       if @stepeight.update_attributes(params[:stepeight])
-        format.html { redirect_to(@stepeight, :notice => 'Stepeight was successfully updated.') }
-        format.xml  { head :ok }
+        format.html { redirect_to(root_path, :notice => 'Stepeight was successfully updated.') }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @stepeight.errors, :status => :unprocessable_entity }

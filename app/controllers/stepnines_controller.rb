@@ -46,8 +46,7 @@ class StepninesController < ApplicationController
 
     respond_to do |format|
       if @stepnine.save
-        format.html { redirect_to(@stepnine, :notice => 'Stepnine was successfully created.') }
-        format.xml  { render :xml => @stepnine, :status => :created, :location => @stepnine }
+        format.html { redirect_to(root_path, :notice => 'Stepnine was successfully created.') }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @stepnine.errors, :status => :unprocessable_entity }
@@ -62,8 +61,7 @@ class StepninesController < ApplicationController
 
     respond_to do |format|
       if @stepnine.update_attributes(params[:stepnine])
-        format.html { redirect_to(@stepnine, :notice => 'Stepnine was successfully updated.') }
-        format.xml  { head :ok }
+        format.html { redirect_to(root_path, :notice => 'Stepnine was successfully updated.') }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @stepnine.errors, :status => :unprocessable_entity }

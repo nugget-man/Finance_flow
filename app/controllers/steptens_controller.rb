@@ -46,8 +46,7 @@ class SteptensController < ApplicationController
 
     respond_to do |format|
       if @stepten.save
-        format.html { redirect_to(@stepten, :notice => 'Stepten was successfully created.') }
-        format.xml  { render :xml => @stepten, :status => :created, :location => @stepten }
+        format.html { redirect_to(root_path, :notice => 'Stepten was successfully created.') }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @stepten.errors, :status => :unprocessable_entity }
@@ -62,8 +61,7 @@ class SteptensController < ApplicationController
 
     respond_to do |format|
       if @stepten.update_attributes(params[:stepten])
-        format.html { redirect_to(@stepten, :notice => 'Stepten was successfully updated.') }
-        format.xml  { head :ok }
+        format.html { redirect_to(root_path, :notice => 'Stepten was successfully updated.') }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @stepten.errors, :status => :unprocessable_entity }

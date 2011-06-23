@@ -11,7 +11,7 @@ class Customer < ActiveRecord::Base
   has_one :stepeight
   has_one :stepnine
   has_one :stepten
-  attr_accessible :id, :fname, :lname
+  attr_accessible :id, :fname, :lname, :step
     def self.search(search)
     if search
       where('lname LIKE ?', "%#{search}%")

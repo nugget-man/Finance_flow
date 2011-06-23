@@ -112,7 +112,7 @@ ActiveRecord::Schema.define(:version => 20110622172710) do
     t.integer  "credexp"
     t.integer  "credequ"
     t.integer  "credtra"
-    t.boolean  "lender"
+    t.boolean  "complete"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

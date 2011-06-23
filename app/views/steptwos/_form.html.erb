@@ -2,10 +2,10 @@
   <%= f.error_notification %>
 
   <div class="inputs">
-    <%= f.hidden :customer_id, @custid %>
-    <%= f.hidden :customer_fname, @custfname %>
-    <%= f.hidden :customer_lname, @custlname %>
-    <%= f.input :title %>
+    <%= f.input :customer_id,    :as => :hidden, :input_html => {:value => @customer.id}     %>
+    <%= f.input :customer_fname, :as => :hidden, :input_html => {:value => @customer.fname}  %>
+    <%= f.input :customer_lname, :as => :hidden, :input_html => {:value => @customer.lname}  %>
+    <%= f.input :title,          :as => :hidden, :input_html => {:value => 'In Progress'} %>
     <%= f.input :complete %>
   </div>
 
