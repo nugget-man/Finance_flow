@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(:version => 20110622172710) do
     t.datetime "updated_at"
   end
 
+  create_table "flowones", :force => true do |t|
+    t.integer  "flowlist_id"
+    t.string   "flowlist_name"
+    t.integer  "customer_id"
+    t.string   "customer_fname"
+    t.string   "customer_lname"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
