@@ -1,31 +1,36 @@
-<h1>Listing stepfives</h1>
-
-<table>
+<div id="searchcontent">
+<h2 id="searchtitle">GFE Signed and Sent</h2>
+<%= form_tag stepfives_path, :method => 'get' do%>
+    <%= hidden_field_tag :direction, params[:direction]%>
+    <%= hidden_field_tag :sort, params[:sort]%>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
+<% end %>
+<table class="search">
   <tr>
-    <th>Customer</th>
-    <th>Customer fname</th>
-    <th>Customer lname</th>
-    <th>Title</th>
-    <th>Complete</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th><span><%= sortable "customer_id", "Customer #"%>&nbsp;</span></th>
+    <th><span><%= sortable "customer_lname", "Last" %>, <%= sortable "customer_fname", "First" %>&nbsp;</span></th>
+    <th><span><%= sortable "title", "Step Status" %>&nbsp;</span></th>
+    <th><span><%= sortable "updated_at", "Updated at" %>&nbsp;</span></th>
+    <th>Modify</th>
+    <th>Remove Step</th>
   </tr>
-
-<% @stepfives.each do |stepfife| %>
+<tbody>
+<% @stepfives.each do |stepfive| %>
   <tr>
-    <td><%= stepfife.customer_id %></td>
-    <td><%= stepfife.customer_fname %></td>
-    <td><%= stepfife.customer_lname %></td>
-    <td><%= stepfife.title %></td>
-    <td><%= stepfife.complete %></td>
-    <td><%= link_to 'Show', stepfife %></td>
-    <td><%= link_to 'Edit', edit_stepfife_path(stepfife) %></td>
-    <td><%= link_to 'Destroy', stepfife, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= stepfive.customer_id %></td>
+    <td><%= stepfive.customer_lname.capitalize %>, <%= stepfive.customer_fname.capitalize %></td>
+    <td><%= stepfive.title %></td>
+    <td><%= stepfive.updated_at %></td>
+    <td><%= link_to 'Edit', edit_stepfive_path(stepfive) %></td>
+    <td><%= link_to 'Destroy', stepfive, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
+<%= will_paginate @stepfives %>
 
 <br />
-
-<%= link_to 'New Stepfive', new_stepfife_path %>
+</div>

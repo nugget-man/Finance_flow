@@ -1,35 +1,36 @@
-<h1>Listing stepeights</h1>
-
-<table>
+<div id="searchcontent">
+<h2 id="searchtitle">Appraisal Ordered</h2>
+<%= form_tag stepeights_path, :method => 'get' do%>
+    <%= hidden_field_tag :direction, params[:direction]%>
+    <%= hidden_field_tag :sort, params[:sort]%>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
+<% end %>
+<table class="search">
   <tr>
-    <th>Customer</th>
-    <th>Customer fname</th>
-    <th>Customer lname</th>
-    <th>Title</th>
-    <th>Appraisal</th>
-    <th>Phone</th>
-    <th>Complete</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th><span><%= sortable "customer_id", "Customer #"%>&nbsp;</span></th>
+    <th><span><%= sortable "customer_lname", "Last" %>, <%= sortable "customer_fname", "First" %>&nbsp;</span></th>
+    <th><span><%= sortable "title", "Step Status" %>&nbsp;</span></th>
+    <th><span><%= sortable "updated_at", "Updated at" %>&nbsp;</span></th>
+    <th>Modify</th>
+    <th>Remove Step</th>
   </tr>
-
+<tbody>
 <% @stepeights.each do |stepeight| %>
   <tr>
     <td><%= stepeight.customer_id %></td>
-    <td><%= stepeight.customer_fname %></td>
-    <td><%= stepeight.customer_lname %></td>
+    <td><%= stepeight.customer_lname.capitalize %>, <%= stepeight.customer_fname.capitalize %></td>
     <td><%= stepeight.title %></td>
-    <td><%= stepeight.appraisal %></td>
-    <td><%= stepeight.phone %></td>
-    <td><%= stepeight.complete %></td>
-    <td><%= link_to 'Show', stepeight %></td>
+    <td><%= stepeight.updated_at %></td>
     <td><%= link_to 'Edit', edit_stepeight_path(stepeight) %></td>
-    <td><%= link_to 'Destroy', stepeight, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', stepfour, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
+<%= will_paginate @stepeights %>
 
 <br />
-
-<%= link_to 'New Stepeight', new_stepeight_path %>
+</div>

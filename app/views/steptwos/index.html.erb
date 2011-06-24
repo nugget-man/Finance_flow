@@ -1,31 +1,36 @@
-<h1>Listing steptwos</h1>
-
-<table>
+<div id="searchcontent">
+<h2 id="searchtitle">Initial Conditions Received</h2>
+<%= form_tag steptwos_path, :method => 'get' do%>
+    <%= hidden_field_tag :direction, params[:direction]%>
+    <%= hidden_field_tag :sort, params[:sort]%>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
+<% end %>
+<table class="search">
   <tr>
-    <th>Customer</th>
-    <th>Customer fname</th>
-    <th>Customer lname</th>
-    <th>Title</th>
-    <th>Complete</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th><span><%= sortable "customer_id", "Customer #"%>&nbsp;</span></th>
+    <th><span><%= sortable "customer_lname", "Last" %>, <%= sortable "customer_fname", "First" %>&nbsp;</span></th>
+    <th><span><%= sortable "title", "Step Status" %>&nbsp;</span></th>
+    <th><span><%= sortable "updated_at", "Updated at" %>&nbsp;</span></th>
+    <th>Modify</th>
+    <th>Remove Step</th>
   </tr>
-
+<tbody>
 <% @steptwos.each do |steptwo| %>
   <tr>
     <td><%= steptwo.customer_id %></td>
-    <td><%= steptwo.customer_fname %></td>
-    <td><%= steptwo.customer_lname %></td>
+    <td><%= steptwo.customer_lname.capitalize %>, <%= steptwo.customer_fname.capitalize %></td>
     <td><%= steptwo.title %></td>
-    <td><%= steptwo.complete %></td>
-    <td><%= link_to 'Show', steptwo %></td>
+    <td><%= steptwo.updated_at %></td>
     <td><%= link_to 'Edit', edit_steptwo_path(steptwo) %></td>
     <td><%= link_to 'Destroy', steptwo, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
+<%= will_paginate @steptwos %>
 
 <br />
-
-<%= link_to 'New Steptwo', new_steptwo_path %>
+</div>

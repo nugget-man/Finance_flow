@@ -1,10 +1,11 @@
 class StepeightsController < ApplicationController
   before_filter :authenticate_user!
+  helper_method :sort_column, :sort_direction
 
   # GET /stepeights
   # GET /stepeights.xml
   def index
-    @stepeights = Stepeight.all
+    @stepeights = Stepeight.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -79,5 +80,14 @@ class StepeightsController < ApplicationController
       format.html { redirect_to(stepeights_url) }
       format.xml  { head :ok }
     end
+  end
+  private
+  def sort_column
+    Customer.column_names.include?(params[:sort]) ? params[:sort] : "updated_at"
+  end
+
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
   end
 end

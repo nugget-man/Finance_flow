@@ -1,10 +1,11 @@
 class StepsevensController < ApplicationController
   before_filter :authenticate_user!
+  helper_method :sort_column, :sort_direction
 
   # GET /stepsevens
   # GET /stepsevens.xml
   def index
-    @stepsevens = Stepseven.all
+    @stepsevens = Stepseven.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -79,5 +80,14 @@ class StepsevensController < ApplicationController
       format.html { redirect_to(stepsevens_url) }
       format.xml  { head :ok }
     end
+  end
+  private
+  def sort_column
+    Customer.column_names.include?(params[:sort]) ? params[:sort] : "updated_at"
+  end
+
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
   end
 end

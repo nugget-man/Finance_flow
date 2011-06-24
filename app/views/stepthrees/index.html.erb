@@ -1,31 +1,36 @@
-<h1>Listing stepthrees</h1>
-
-<table>
+<div id="searchcontent">
+<h2 id="searchtitle">Submitted for Preapproval</h2>
+<%= form_tag stepthrees_path, :method => 'get' do%>
+    <%= hidden_field_tag :direction, params[:direction]%>
+    <%= hidden_field_tag :sort, params[:sort]%>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
+<% end %>
+<table class="search">
   <tr>
-    <th>Customer</th>
-    <th>Customer fname</th>
-    <th>Customer lname</th>
-    <th>Title</th>
-    <th>Complete</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th><span><%= sortable "customer_id", "Customer #"%>&nbsp;</span></th>
+    <th><span><%= sortable "customer_lname", "Last" %>, <%= sortable "customer_fname", "First" %>&nbsp;</span></th>
+    <th><span><%= sortable "title", "Step Status" %>&nbsp;</span></th>
+    <th><span><%= sortable "updated_at", "Updated at" %>&nbsp;</span></th>
+    <th>Modify</th>
+    <th>Remove Step</th>
   </tr>
-
+<tbody>
 <% @stepthrees.each do |stepthree| %>
   <tr>
     <td><%= stepthree.customer_id %></td>
-    <td><%= stepthree.customer_fname %></td>
-    <td><%= stepthree.customer_lname %></td>
+    <td><%= stepthree.customer_lname.capitalize %>, <%= stepthree.customer_fname.capitalize %></td>
     <td><%= stepthree.title %></td>
-    <td><%= stepthree.complete %></td>
-    <td><%= link_to 'Show', stepthree %></td>
-    <td><%= link_to 'Edit', edit_stepthree_path(stepthree) %></td>
+    <td><%= stepthree.updated_at %></td>
+    <td><%= link_to 'Edit', edit_stepthree_path(stepone) %></td>
     <td><%= link_to 'Destroy', stepthree, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
+<%= will_paginate @stepthrees %>
 
 <br />
-
-<%= link_to 'New Stepthree', new_stepthree_path %>
+</div>
