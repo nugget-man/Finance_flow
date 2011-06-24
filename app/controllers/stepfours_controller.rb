@@ -28,7 +28,7 @@ class StepfoursController < ApplicationController
   # GET /stepfours/new.xml
   def new
     @stepfour = Stepfour.new
-
+    @customer = Customer.find_by_id(params[:id])
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @stepfour }
@@ -37,7 +37,8 @@ class StepfoursController < ApplicationController
 
   # GET /stepfours/1/edit
   def edit
-    @stepfour = Stepfour.find(params[:id])
+    @stepfour = Stepfour.find_by_customer_id(params[:id])
+    @customer = Customer.find_by_id(params[:id])
   end
 
   # POST /stepfours

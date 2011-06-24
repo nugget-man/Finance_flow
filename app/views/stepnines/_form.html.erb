@@ -1,16 +1,21 @@
+
+
 <%= simple_form_for(@stepnine) do |f| %>
   <%= f.error_notification %>
+  <h2>Check on HUD</h2>
+  <h3>for customer: <%= @customer.fname.capitalize %> <%= @customer.lname.capitalize%> </h3>
 
+
+  <p>This step is optional and is completed if there is a HUD. Check the appropriate boxes if the items are present</p>
+  <p>If no HUD for this customer, simply complete the step.</p>
   <div class="inputs">
-    <%= f.input :customer_id %>
-    <%= f.input :customer_fname %>
-    <%= f.input :customer_lname %>
-    <%= f.input :title %>
-    <%= f.input :irrelevent %>
+    <%= f.input :customer_id,    :as => :hidden, :input_html => {:value => @customer.id}     %>
+    <%= f.input :customer_fname, :as => :hidden, :input_html => {:value => @customer.fname}  %>
+    <%= f.input :customer_lname, :as => :hidden, :input_html => {:value => @customer.lname}  %>
+    <%= f.input :title,          :as => :hidden, :input_html => {:value => 'In Progress'} %>
     <%= f.input :refurb %>
     <%= f.input :survey %>
     <%= f.input :title %>
-    <%= f.input :utilities %>
     <%= f.input :complete %>
   </div>
 

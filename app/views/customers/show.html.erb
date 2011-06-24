@@ -12,8 +12,7 @@
   </tr>
 </table>
 </div>
-<a><h2>Move this customer into Finance!</h2></a>
-<%= render :partial => 'comments/form', :locals => {:commentable => @customer} %>
+<h2><%= link_to 'Move this customer into Finance!', finance_path(@customer.id)%></h2>
 
 
 <%= link_to 'Edit', edit_customer_path(@customer) %> |

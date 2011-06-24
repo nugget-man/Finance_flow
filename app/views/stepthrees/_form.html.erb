@@ -1,11 +1,14 @@
 <%= simple_form_for(@stepthree) do |f| %>
   <%= f.error_notification %>
+  <h2>Submitted for Preapproval</h2>
 
+  <p>If this step is incomplete, click the button below without checking the box. Once the box has been checked, this step will be complete. </p>
+  <p>This step is completed when the customer is completely ready for preapproval.</p>
   <div class="inputs">
-    <%= f.input :customer_id %>
-    <%= f.input :customer_fname %>
-    <%= f.input :customer_lname %>
-    <%= f.input :title %>
+    <%= f.input :customer_id,    :as => :hidden, :input_html => {:value => @customer.id}     %>
+    <%= f.input :customer_fname, :as => :hidden, :input_html => {:value => @customer.fname}  %>
+    <%= f.input :customer_lname, :as => :hidden, :input_html => {:value => @customer.lname}  %>
+    <%= f.input :title,          :as => :hidden, :input_html => {:value => 'In Progress'} %>
     <%= f.input :complete %>
   </div>
 

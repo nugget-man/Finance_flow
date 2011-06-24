@@ -1,11 +1,14 @@
 <%= simple_form_for(@stepten) do |f| %>
   <%= f.error_notification %>
+  <h2>Loan Closed and Funded</h2>
 
+
+  <p>This step is completed when the customer is completely through with the finance process.</p>
   <div class="inputs">
-    <%= f.input :customer_id %>
-    <%= f.input :customer_fname %>
-    <%= f.input :customer_lname %>
-    <%= f.input :title %>
+    <%= f.input :customer_id,    :as => :hidden, :input_html => {:value => @customer.id}     %>
+    <%= f.input :customer_fname, :as => :hidden, :input_html => {:value => @customer.fname}  %>
+    <%= f.input :customer_lname, :as => :hidden, :input_html => {:value => @customer.lname}  %>
+    <%= f.input :title,          :as => :hidden, :input_html => {:value => 'In Progress'} %>
     <%= f.input :complete %>
   </div>
 

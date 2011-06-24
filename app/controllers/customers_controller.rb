@@ -101,6 +101,7 @@ class CustomersController < ApplicationController
       if @title === 'In Progress'
         if @complete = @stepone[:complete]
           Stepone.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
+          Customer.find_by_id(params[:id]).update_attribute(:step, 2)
           redirect_to step2_path(params[:id])
         else
           redirect_to step1edit_path(params[:id])
@@ -118,6 +119,7 @@ class CustomersController < ApplicationController
       if @title === 'In Progress'
         if @complete = @steptwo[:complete]
           Steptwo.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
+          Customer.find_by_id(params[:id]).update_attribute(:step, 3)
           redirect_to step3_path(params[:id])
         else
           redirect_to step2edit_path(params[:id])
@@ -135,6 +137,7 @@ class CustomersController < ApplicationController
       if @title === 'In Progress'
         if @complete = @stepthree[:complete]
           Stepthree.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
+          Customer.find_by_id(params[:id]).update_attribute(:step, 4)
           redirect_to step4_path(params[:id])
         else
           redirect_to step3edit_path(params[:id])
@@ -152,6 +155,7 @@ class CustomersController < ApplicationController
       if @title === 'In Progress'
         if @complete = @stepfour[:complete]
           Stepfour.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
+          Customer.find_by_id(params[:id]).update_attribute(:step, 5)
           redirect_to step5_path(params[:id])
         else
           redirect_to step4edit_path(params[:id])
@@ -169,6 +173,7 @@ class CustomersController < ApplicationController
       if @title === 'In Progress'
         if @complete = @stepfive[:complete]
           Stepfive.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
+          Customer.find_by_id(params[:id]).update_attribute(:step, 6)
           redirect_to step6_path(params[:id])
         else
           redirect_to step5edit_path(params[:id])
@@ -186,6 +191,7 @@ class CustomersController < ApplicationController
       if @title === 'In Progress'
         if @complete = @stepsix[:complete]
           Stepsix.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
+          Customer.find_by_id(params[:id]).update_attribute(:step, 7)
           redirect_to step7_path(params[:id])
         else
           redirect_to step6edit_path(params[:id])
@@ -203,6 +209,7 @@ class CustomersController < ApplicationController
       if @title === 'In Progress'
         if @complete = @stepseven[:complete]
           Stepseven.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
+          Customer.find_by_id(params[:id]).update_attribute(:step, 8)
           redirect_to step8_path(params[:id])
         else
           redirect_to step7edit_path(params[:id])
@@ -220,6 +227,7 @@ class CustomersController < ApplicationController
       if @title === 'In Progress'
         if @complete = @stepeight[:complete]
           Stepeight.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
+          Customer.find_by_id(params[:id]).update_attribute(:step, 9)
           redirect_to step9_path(params[:id])
         else
           redirect_to step8edit_path(params[:id])
@@ -237,6 +245,7 @@ class CustomersController < ApplicationController
       if @title === 'In Progress'
         if @complete = @stepnine[:complete]
           Stepone.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
+          Customer.find_by_id(params[:id]).update_attribute(:step, 10)
           redirect_to step10_path(params[:id])
         else
           redirect_to step9edit_path(params[:id])
@@ -254,6 +263,7 @@ class CustomersController < ApplicationController
       if @title === 'In Progress'
         if @complete = @stepten[:complete]
           Stepten.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
+          Customer.find_by_id(params[:id]).update_attribute(:step, 99)
           redirect_to root_path
         else
           redirect_to step10edit_path(params[:id])

@@ -37,7 +37,7 @@ class SteponesController < ApplicationController
 
   # GET /stepones/1/edit
   def edit
-    @stepone = Stepone.find(params[:id])
+    @stepone = Stepone.find_by_customer_id(params[:id])
     @customer = Customer.find_by_id(@stepone.customer_id)
   end
 

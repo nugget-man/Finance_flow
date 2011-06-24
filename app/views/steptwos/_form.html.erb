@@ -1,6 +1,9 @@
 <%= simple_form_for(@steptwo) do |f| %>
   <%= f.error_notification %>
+  <h2>Initial Conditions Received</h2>
 
+  <p>If this step is incomplete, click the button below without checking the box. Once the box has been checked, this step will be complete. </p>
+  <p>This step is completed when all of the initial conditions have been received.</p>
   <div class="inputs">
     <%= f.input :customer_id,    :as => :hidden, :input_html => {:value => @customer.id}     %>
     <%= f.input :customer_fname, :as => :hidden, :input_html => {:value => @customer.fname}  %>

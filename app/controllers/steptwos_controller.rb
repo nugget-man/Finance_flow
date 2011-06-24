@@ -36,7 +36,8 @@ class SteptwosController < ApplicationController
 
   # GET /steptwos/1/edit
   def edit
-    @steptwo = Steptwo.find(params[:id])
+    @steptwo = Steptwo.find_by_customer_id(params[:id])
+    @customer = Customer.find_by_id(params[:id])
   end
 
   # POST /steptwos

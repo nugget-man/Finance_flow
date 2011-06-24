@@ -19,10 +19,9 @@
     <%= f.label :lname, 'Last Name' %><br />
     <%= f.text_field :lname %>
   </div>
-  <div class="field">
-    <%= f.label :step, 'Current Step (numerical)' %><br />
-    <%= f.text_field :step %>
-  </div>
+
+    <%= f.hidden_field :step, :value => 0 %>
+
   <div class="field">
     <%= f.label :salesman, 'Salesman' %><br />
     <%= f.text_field :salesman %>
