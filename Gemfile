@@ -12,6 +12,8 @@ gem 'devise'
 gem "will_paginate", "~> 3.0.pre2"
 gem "cancan"
 gem "acts_as_commentable"
+gem "thin"
+gem "passenger"
 # Use unicorn as the web server
 # gem 'unicorn'
 
