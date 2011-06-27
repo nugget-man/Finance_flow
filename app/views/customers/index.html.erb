@@ -29,8 +29,8 @@
     <td><%= link_to 'Show', customer %></td>
     <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
     <td><% form_tag finance_path(customer.id), :method => 'get' do%>
-      <%= submit_tag "Finance", :name => nil%>
-    <% end %>
+    <%= submit_tag "Finance", :name => nil%>
+<% end %>
     </td>
   </tr>
 <% end %>
