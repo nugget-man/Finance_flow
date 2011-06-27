@@ -77,9 +77,29 @@ class CustomersController < ApplicationController
   # DELETE /customers/1
   # DELETE /customers/1.xml
   def destroy
-    @customer = Customer.find(params[:id])
-    @customer.destroy
-
+    if Customer.find(params[:id]).destroy
+      if Stepone.find_by_customer_id(params[:id]).destroy
+        if Steptwo.find_by_customer_id(params[:id]).destroy
+          if Stepthree.find_by_customer_id(params[:id]).destroy
+            if Stepfour.find_by_customer_id(params[:id]).destroy
+              if Stepfive.find_by_customer_id(params[:id]).destroy
+                if Stepsix.find_by_customer_id(params[:id]).destroy
+                  if Stepseven.find_by_customer_id(params[:id]).destroy
+                    if Stepeight.find_by_customer_id(params[:id]).destroy
+                      if Stepnine.find_by_customer_id(params[:id]).destroy
+                        if Stepten.find_by_customer_id(params[:id]).destroy
+                          #good job on making it this far!
+                        end
+                      end
+                    end
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+    end
     respond_to do |format|
       format.html { redirect_to(customers_url) }
       format.xml  { head :ok }
@@ -288,5 +308,8 @@ class CustomersController < ApplicationController
 
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
+  end
+  def finance_button
+    @customer = customer.id
   end
 end
