@@ -14,7 +14,7 @@
 	font-size: 12px;
 	margin: 10px;
     margin-color: #039;
-	width: 640px;
+	width: 88em;
 
 	border-collapse: collapse;
 	text-align: left;
@@ -92,7 +92,7 @@
 {
 	margin-left: auto;
 	margin-right: auto;
-	width: 55em;
+	width: 90em;
 	text-align: center;
     background-color:#fff;
 }
