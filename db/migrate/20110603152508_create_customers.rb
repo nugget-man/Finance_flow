@@ -14,8 +14,8 @@ class CreateCustomers < ActiveRecord::Migration
       t.string :salesman
       t.integer :step
       t.boolean :inprogress
-      t.boolean :allconditions
-      t.boolean :conditionsreceived
+      t.boolean :prelimcondmet
+      t.string  :prelimcondmetuser
       t.integer :exp
       t.integer :equ
       t.integer :tra

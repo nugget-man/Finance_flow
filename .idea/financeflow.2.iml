@@ -83,25 +83,25 @@
     <orderEntry type="library" scope="PROVIDED" name="daemon_controller (v0.2.6, RVM: ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack (v1.2.2, RVM: ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v0.3.27, RVM: ruby-1.9.2-p180) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="warden (v1.0.4, RVM: ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="polyglot (v0.3.1, RVM: ruby-1.9.2-p180) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="warden (v1.0.4, RVM: ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thin (v1.2.11, RVM: ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mime-types (v1.16, RVM: ruby-1.9.2-p180) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="treetop (v1.4.9, RVM: ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="fastthread (v1.0.7, RVM: ruby-1.9.2-p180) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="mail (v2.2.19, RVM: ruby-1.9.2-p180) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="treetop (v1.4.9, RVM: ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="actionmailer (v3.0.7.rc1, RVM: ruby-1.9.2-p180) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="mail (v2.2.19, RVM: ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="daemons (v1.1.4, RVM: ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-test (v0.5.7, RVM: ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activesupport (v3.0.7.rc1, RVM: ruby-1.9.2-p180) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="actionpack (v3.0.7.rc1, RVM: ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="passenger (v3.0.7, RVM: ruby-1.9.2-p180) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="actionpack (v3.0.7.rc1, RVM: ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="orm_adapter (v0.0.5, RVM: ruby-1.9.2-p180) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="arel (v2.0.9, RVM: ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-mount (v0.6.14, RVM: ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="will_paginate (v3.0.pre2, RVM: ruby-1.9.2-p180) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rake (v0.8.7, RVM: ruby-1.9.2-p180) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="arel (v2.0.9, RVM: ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="eventmachine (v0.12.10, RVM: ruby-1.9.2-p180) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rake (v0.8.7, RVM: ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="devise (v1.3.4, RVM: ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thor (v0.14.6, RVM: ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="acts_as_commentable (v3.0.1, RVM: ruby-1.9.2-p180) [gem]" level="application" />
@@ -112,12 +112,12 @@
     <orderEntry type="library" scope="PROVIDED" name="railties (v3.0.7.rc1, RVM: ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="cancan (v1.6.5, RVM: ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="abstract (v1.0.0, RVM: ruby-1.9.2-p180) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rails (v3.0.7.rc1, RVM: ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v1.3.3, RVM: ruby-1.9.2-p180) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="erubis (v2.6.6, RVM: ruby-1.9.2-p180) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rails (v3.0.7.rc1, RVM: ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activemodel (v3.0.7.rc1, RVM: ruby-1.9.2-p180) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="simple_form (v1.4.0, RVM: ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v1.0.15, RVM: ruby-1.9.2-p180) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="simple_form (v1.4.0, RVM: ruby-1.9.2-p180) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="erubis (v2.6.6, RVM: ruby-1.9.2-p180) [gem]" level="application" />
   </component>
 </module>
 

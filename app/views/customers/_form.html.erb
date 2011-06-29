@@ -68,22 +68,22 @@
     <div class="wrapper">
       <div class="createformbottom" id="createformbottom">
         <h2>Financial Information</h2>
-        <table>
+        <table style="margin-left: auto;margin-right: auto;">
           <tr>
             <td><%= f.label :salesman, 'Salesman' %></td>
             <td><%= f.text_field :salesman %></td>
           </tr>
           <tr>
-            <td><%= f.label :allconditions, 'All conditions met?' %></td>
-            <td>Yes<%= f.radio_button :allconditions, true %>No<%= f.radio_button :allconditions, false %></td>
+            <td><%= f.label :prelimcondmet, 'Conditions received and met?' %></td>
+            <td>Yes<%= f.radio_button :prelimcondmet, true %>No<%= f.radio_button :prelimcondmet, false %></td>
           </tr>
           <tr>
-            <td><%= f.label :conditionsreceived, 'All conditions received?' %></td>
-            <td>Yes<%= f.radio_button :conditionsreceived, true %>No<%= f.radio_button :conditionsreceived, false %></td>
+            <td><%= f.label :prelimcondmetuser, 'Conditions Signed by: ' %></td>
+            <td><%= f.text_field :prelimcondmetuser %></td>
           </tr>
           <tr>
             <td>Credit Scores</td>
-            <td>Exp<%= f.text_field :exp, :size => 3%>Equ<%= f.text_field :exp, :size => 3%>Tra<%= f.text_field :exp, :size => 3%></td>
+            <td>Exp<%= f.text_field :exp, :size => 3%>Equ<%= f.text_field :equ, :size => 3%>Tra<%= f.text_field :tra, :size => 3%></td>
           </tr>
         </table>
       </div>
