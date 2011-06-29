@@ -90,14 +90,48 @@
 
 .maincontent
 {
-	margin-left: auto;
-	margin-right: auto;
 	width: 90em;
 	text-align: center;
     background-color:#fff;
+    position:fixed;
+    left: 50%;
+    margin: 0 0 0 -45em;
+}
+.wrapper{
+    width:70em;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    height:20em;
+}
+.createform {
+    position:relative;
+    width:32em;
+    height:18em;
+    border: 2px solid #add1da;
+}
+.createformbottom {
+    position:relative;
+    width:32em;
+    height:18em;
+    border: 2px solid #add1da;
+    margin-left:auto;
+    margin-right:auto;
 }
 
+#createformbottom {
+    position:relative;
 
+}
+#borrower {
+    position:relative;
+    float:left;
+}
+
+#coborrower {
+    position:relative;
+    float:right;
+}
 .roundedcornr_box_283612 {
    background: #ffffff;
 }

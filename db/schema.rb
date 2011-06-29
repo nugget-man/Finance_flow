@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110622172710) do
+ActiveRecord::Schema.define(:version => 20110629164138) do
 
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""
@@ -29,24 +29,29 @@ ActiveRecord::Schema.define(:version => 20110622172710) do
   create_table "customers", :force => true do |t|
     t.string   "fname"
     t.string   "lname"
-    t.integer  "step"
+    t.string   "email"
+    t.string   "homephone"
+    t.string   "cellphone"
+    t.string   "fnameco"
+    t.string   "lnameco"
+    t.string   "emailco"
+    t.string   "homephoneco"
+    t.string   "cellphoneco"
     t.string   "salesman"
+    t.integer  "step"
+    t.boolean  "inprogress"
+    t.boolean  "allconditions"
+    t.boolean  "conditionsreceived"
+    t.integer  "exp"
+    t.integer  "equ"
+    t.integer  "tra"
+    t.string   "createdby"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "flowlists", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "flowones", :force => true do |t|
-    t.integer  "flowlist_id"
-    t.string   "flowlist_name"
-    t.integer  "customer_id"
-    t.string   "customer_fname"
-    t.string   "customer_lname"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

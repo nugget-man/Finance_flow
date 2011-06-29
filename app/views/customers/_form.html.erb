@@ -1,32 +1,94 @@
 <%= form_for(@customer) do |f| %>
-  <% if @customer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+    <% if @customer.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
 
-      <ul>
-      <% @customer.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @customer.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="wrapper">
+      <div class="createform" id="borrower">
+        <h2>Borrower</h2>
+        <table>
+          <tr>
+            <td><%= f.label :fname, 'First Name' %></td>
+            <td><%= f.text_field :fname %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :lname, 'Last Name' %></td>
+            <td><%= f.text_field :lname %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :email, 'Email Address' %></td>
+            <td><%= f.text_field :email %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :homephone, 'Home Phone' %></td>
+            <td><%= f.text_field :homephone %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :cellphone, 'Cell Phone' %></td>
+            <td><%= f.text_field :cellphone %></td>
+          </tr>
+        </table>
+      </div>
+      <div class="createform" id="coborrower">
+        <h2>Co-Borrower</h2>
+        <table>
+          <tr>
+            <td><%= f.label :fnameco, 'First Name' %></td>
+            <td><%= f.text_field :fnameco %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :lnameco, 'Last Name' %></td>
+            <td><%= f.text_field :lnameco %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :emailco, 'Email Address' %></td>
+            <td><%= f.text_field :emailco %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :homephoneco, 'Home Phone' %></td>
+            <td><%= f.text_field :homephoneco %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :cellphoneco, 'Cell Phone' %></td>
+            <td><%= f.text_field :cellphoneco %></td>
+          </tr>
+        </table>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :fname, 'First Name' %><br />
-    <%= f.text_field :fname %>
-  </div>
-  <div class="field">
-    <%= f.label :lname, 'Last Name' %><br />
-    <%= f.text_field :lname %>
-  </div>
-
     <%= f.hidden_field :step, :value => 0 %>
-
-  <div class="field">
-    <%= f.label :salesman, 'Salesman' %><br />
-    <%= f.text_field :salesman %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.hidden_field :inprogress, :value => false %>
+    <%= f.hidden_field :createdby, :value => current_user.email %>
+    <div class="wrapper">
+      <div class="createformbottom" id="createformbottom">
+        <h2>Financial Information</h2>
+        <table>
+          <tr>
+            <td><%= f.label :salesman, 'Salesman' %></td>
+            <td><%= f.text_field :salesman %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :allconditions, 'All conditions met?' %></td>
+            <td>Yes<%= f.radio_button :allconditions, true %>No<%= f.radio_button :allconditions, false %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :conditionsreceived, 'All conditions received?' %></td>
+            <td>Yes<%= f.radio_button :conditionsreceived, true %>No<%= f.radio_button :conditionsreceived, false %></td>
+          </tr>
+          <tr>
+            <td>Credit Scores</td>
+            <td>Exp<%= f.text_field :exp, :size => 3%>Equ<%= f.text_field :exp, :size => 3%>Tra<%= f.text_field :exp, :size => 3%></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>
