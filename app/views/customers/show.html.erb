@@ -1,58 +1,58 @@
 <p id="notice"><%= notice %></p>
 <div style="margin-left:auto; margin-right:auto; text-align:center; width:40em">
-<table style="text-align:left">
-  <tr>
-    <td class="tableright"><b>Borrower Name: |</b></td><td><%= @customer.lname.capitalize %>, <%= @customer.fname.capitalize %></td>
-  </tr>
-  <tr>
-    <td class="tableright"><b>Borrower Email: |</b></td><td><%= @customer.email%></td>
-  </tr>
-  <tr>
-    <td class="tableright"><b>Borrower Home Phone: |</b></td><td><%= @customer.homephone%></td>
-  </tr>
-  <tr>
-    <td class="tableright"><b>Borrower Cell Phone: |</b></td><td><%= @customer.cellphone%></td>
-  </tr>
-  <tr>
-    <td class="tableright"><b>Coborrower Name: |</b></td><td><%= @customer.lnameco.capitalize %>, <%= @customer.fnameco.capitalize %></td>
-  </tr>
-  <tr>
-    <td class="tableright"><b>Coborrower Email: |</b></td><td><%= @customer.emailco%></td>
-  </tr>
-  <tr>
-    <td class="tableright"><b>Coborrower Home Phone: |</b></td><td><%= @customer.homephoneco%></td>
-  </tr>
-  <tr>
-    <td class="tableright"><b>Coborrower Cell Phone: |</b></td><td><%= @customer.cellphoneco%></td>
-  </tr>
-  <tr>
-    <td class="tableright"><b>Current Step: |</b></td><td><%= @customer.step %></td>
-  </tr>
-  <tr>
-    <% if @customer.inprogress %>
-    <td class="tableright"><b>Step In-Progress: |</b><br></td><td>Yes</td>
-    <% else %>
-    <td class="tableright"><b>Step In-Progress: |</b><br></td><td>No</td>
-    <% end %>
-  </tr>
-  <tr>
-    <% if @customer.prelimcondmet %>
-    <td class="tableright"><b>Preliminary Conditions Met: |</b><br></td><td>Yes</td>
-    <% else %>
-    <td class="tableright"><b>Preliminary Conditions Met: |</b><br></td><td>No</td>
-    <% end %>
-  </tr>
-  <tr>
-    <% if @customer.prelimcondmetuser %>
-    <td class="tableright"><b>Conditions Signed by: |</b><br></td><td>@customer.prelimcondmetuser</td>
-    <% else %>
-    <td class="tableright"><b>Conditions Signed by: |</b><br></td><td>N/A</td>
-    <% end %>
-  </tr>
-  <tr>
-    <td class="tableright"><b>Salesman: |</b></td><td><%= @customer.salesman %></td>
-  </tr>
-</table>
+  <table style="text-align:left">
+    <tr>
+      <td class="tableright"><b>Borrower Name: |</b></td><td><%= @customer.lname.capitalize %>, <%= @customer.fname.capitalize %></td>
+    </tr>
+    <tr>
+      <td class="tableright"><b>Borrower Email: |</b></td><td><%= @customer.email%></td>
+    </tr>
+    <tr>
+      <td class="tableright"><b>Borrower Home Phone: |</b></td><td><%= @customer.homephone%></td>
+    </tr>
+    <tr>
+      <td class="tableright"><b>Borrower Cell Phone: |</b></td><td><%= @customer.cellphone%></td>
+    </tr>
+    <tr>
+      <td class="tableright"><b>Coborrower Name: |</b></td><td><%= @customer.lnameco.capitalize %>, <%= @customer.fnameco.capitalize %></td>
+    </tr>
+    <tr>
+      <td class="tableright"><b>Coborrower Email: |</b></td><td><%= @customer.emailco%></td>
+    </tr>
+    <tr>
+      <td class="tableright"><b>Coborrower Home Phone: |</b></td><td><%= @customer.homephoneco%></td>
+    </tr>
+    <tr>
+      <td class="tableright"><b>Coborrower Cell Phone: |</b></td><td><%= @customer.cellphoneco%></td>
+    </tr>
+    <tr>
+      <td class="tableright"><b>Current Step: |</b></td><td><%= @customer.step %></td>
+    </tr>
+    <tr>
+      <% if @customer.inprogress %>
+          <td class="tableright"><b>Step In-Progress: |</b><br></td><td>Yes</td>
+      <% else %>
+          <td class="tableright"><b>Step In-Progress: |</b><br></td><td>No</td>
+      <% end %>
+    </tr>
+    <tr>
+      <% if @customer.prelimcondmet %>
+          <td class="tableright"><b>Preliminary Conditions Met: |</b><br></td><td>Yes</td>
+      <% else %>
+          <td class="tableright"><b>Preliminary Conditions Met: |</b><br></td><td>No</td>
+      <% end %>
+    </tr>
+    <tr>
+      <% if @customer.prelimcondmetuser %>
+          <td class="tableright"><b>Conditions Signed by: |</b><br></td><td>@customer.prelimcondmetuser</td>
+      <% else %>
+          <td class="tableright"><b>Conditions Signed by: |</b><br></td><td>N/A</td>
+      <% end %>
+    </tr>
+    <tr>
+      <td class="tableright"><b>Salesman: |</b></td><td><%= @customer.salesman %></td>
+    </tr>
+  </table>
 </div>
 <h2><%= link_to 'Move this customer into Finance!', finance_path(@customer.id)%></h2>
 

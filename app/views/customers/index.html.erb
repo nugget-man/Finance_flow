@@ -1,42 +1,43 @@
 <div id="searchcontent">
-<h2 id="searchtitle">Customer Viewer</h2>
-<%= link_to 'New Customer', new_customer_path %>
-<%= form_tag customers_path, :method => 'get' do%>
-    <%= hidden_field_tag :direction, params[:direction]%>
-    <%= hidden_field_tag :sort, params[:sort]%>
-    <p>
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "Search", :name => nil %>
-    </p>
-<% end %>
-<table class="search">
-  <tr>
-    <th><span><%= sortable "id", "Customer #"%>&nbsp;</span></th>
-    <th><span><%= sortable "lname", "Last" %>, <%= sortable "fname", "First" %>&nbsp;</span></th>
-    <th><span><%= sortable "step" %>&nbsp;</span></th>
-    <th><span><%= sortable "updated_at", "Updated at" %>&nbsp;</span></th>
-    <th>Details</th>
-    <th>Modify</th>
-    <th>Finance</th>
-  </tr>
-<tbody>
-<% @customers.each do |customer| %>
-  <tr>
-    <td><%= customer.id %></td>
-    <td><%= customer.lname.capitalize %>, <%= customer.fname.capitalize %></td>
-    <td><%= customer.step %></td>
-    <td><%= customer.updated_at %></td>
-    <td><%= link_to 'Show', customer %></td>
-    <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-    <td><% form_tag finance_path(customer.id), :method => 'get' do%>
-    <%= submit_tag "Finance", :name => nil%>
-<% end %>
-    </td>
-  </tr>
-<% end %>
-</tbody>
-</table>
-<%= will_paginate @customers %>
+  <h2 id="searchtitle">Customer Viewer</h2>
+  <%= link_to 'New Customer', new_customer_path %>
+  <%= form_tag customers_path, :method => 'get' do%>
+      <%= hidden_field_tag :direction, params[:direction]%>
+      <%= hidden_field_tag :sort, params[:sort]%>
+      <p>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", :name => nil %>
+      </p>
+  <% end %>
+  <table class="search">
+    <tr>
+      <th><span><%= sortable "id", "ID #"%>&nbsp;</span></th>
+      <th><span><%= sortable "lname", "Last" %>, <%= sortable "fname", "First" %>&nbsp;</span></th>
+      <th><span><%= sortable "step", "Stage" %>&nbsp;</span></th>
+      <th><span><%= sortable "updated_at", "Updated at" %>&nbsp;</span></th>
+      <th><span><%= sortable "salesman", "Salesman" %>&nbsp;</span></th>
+      <th>Finance Steps</th>
+    </tr>
+    <tbody>
+    <% @customers.each do |customer| %>
+        <tr>
+          <td><%= link_to customer.id, customer %></td>
+          <td><%= link_to customer.lname.capitalize + ", " + customer.fname.capitalize, customer %></td>
+          <td><%= customer.step %></td>
+          <td><%= customer.updated_at.to_formatted_s(:db)  %></td>
+          <td><%= customer.salesman.capitalize %></td>
+          <td>
 
-<br />
+            <% form_tag finance_path(customer.id), :method => 'get' do%>
+                <%= select(:customer, :step, Customer::STAGES)%>
+                <%= submit_tag "Finance", :name => nil%>
+            <% end %>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate @customers %>
+
+  <br />
 </div>

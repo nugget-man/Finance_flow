@@ -71,7 +71,7 @@
         <table style="margin-left: auto;margin-right: auto;">
           <tr>
             <td><%= f.label :salesman, 'Salesman' %></td>
-            <td><%= f.text_field :salesman %></td>
+            <td><%= select(:customer, :salesman, Customer::SALESMEN)%></td>
           </tr>
           <tr>
             <td><%= f.label :prelimcondmet, 'Conditions received and met?' %></td>
