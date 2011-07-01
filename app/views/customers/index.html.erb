@@ -9,13 +9,15 @@
         <%= submit_tag "Search", :name => nil %>
       </p>
   <% end %>
-  <table class="search">
+  <table class="search" style="margin-left: auto;margin-right: auto;text-align: left;">
     <tr>
       <th><span><%= sortable "id", "ID #"%>&nbsp;</span></th>
       <th><span><%= sortable "lname", "Last" %>, <%= sortable "fname", "First" %>&nbsp;</span></th>
       <th><span><%= sortable "step", "Stage" %>&nbsp;</span></th>
       <th><span><%= sortable "updated_at", "Updated at" %>&nbsp;</span></th>
       <th><span><%= sortable "salesman", "Salesman" %>&nbsp;</span></th>
+      <th>Current Status</th>
+      <th>Lender</th>
       <th>Finance Steps</th>
     </tr>
     <tbody>
@@ -26,11 +28,21 @@
           <td><%= customer.step %></td>
           <td><%= customer.updated_at.to_formatted_s(:db)  %></td>
           <td><%= customer.salesman.capitalize %></td>
+          <% if customer.updated_at.minus_with_coercion(Time.now)/-86400 > 0.22%>
+          <td style="background-color:#f28080"><%= customer.details %></td>
+          <% else %>
+          <td><%= customer.details %></td>
+          <% end %>
+          <% if stepone = Stepone.find_by_customer_id(customer.id) %>
+          <td><%= stepone.lender%></td>
+          <%else%>
+          <td>N/A</td>
+          <%end%>
           <td>
 
             <% form_tag finance_path(customer.id), :method => 'get' do%>
-                <%= select(:customer, :step, Customer::STAGES)%>
-                <%= submit_tag "Finance", :name => nil%>
+                <%= select_tag "step", options_for_select(Customer::STAGES)%>
+                <%= submit_tag "GO!", :name => nil%>
             <% end %>
           </td>
         </tr>

@@ -1,5 +1,6 @@
 Financeflow2::Application.routes.draw do
   get 'finance/:id' => 'customers#currentstep', :as => 'finance'
+  put 'details/:id' => 'customers#detail', :as => 'details'
   get 'step1/:id' => 'stepones#new', :as => 'step1'
   get 'step1/edit/:id' => 'stepones#edit', :as => 'step1edit'
   get 'step2/:id' => 'steptwos#new', :as => 'step2'

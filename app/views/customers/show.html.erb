@@ -55,7 +55,11 @@
   </table>
 </div>
 <h2><%= link_to 'Move this customer into Finance!', finance_path(@customer.id)%></h2>
-
+<p>Update Customer Status</p>
+<% form_tag details_path(@customer.id), :method => 'put' do%>
+    <%= text_field_tag "details"%>
+    <%= submit_tag "Save", :name => nil%>
+<% end %>
 
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
 <%= link_to 'Back', customers_path %>

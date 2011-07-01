@@ -2,22 +2,44 @@
 
 <p>For Customer: <%= @customer.fname%> <%= @customer.lname%></p>
 
-<%= simple_form_for(@stepone) do |f| %>
-  <%= f.error_notification %>
 
-  <div class="inputs">
-    <%= f.input :customer_id,    :as => :hidden, :input_html => {:value => @customer.id}     %>
-    <%= f.input :customer_fname, :as => :hidden, :input_html => {:value => @customer.fname}  %>
-    <%= f.input :customer_lname, :as => :hidden, :input_html => {:value => @customer.lname}  %>
-    <%= f.input :title,          :as => :hidden, :input_html => {:value => 'In Progress'} %>
-    <%= f.input :creditcheck, :label => 'Check after performing a credit check' %>
-    <%= f.input :credexp,     :label => 'Experian Score' %>
-    <%= f.input :credequ,     :label => 'Equifax Score' %>
-    <%= f.input :credtra,     :label => 'Transunion Score' %>
-    <%= f.input :complete,    :label => 'Check this box when the loan has been approved. This will complete the step.'%>
-  </div>
 
-  <div class="actions">
-    <%= f.button :submit %>
-  </div>
+<% form_for(@stepone) do |f|%>
+    <% if @stepone.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@stepone.errors.count, "error") %> prohibited this customer from being saved:</h2>
+
+          <ul>
+            <% @stepone.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <%= f.hidden_field :customer_id, :value => @customer.id%>
+    <%= f.hidden_field :customer_fname, :value => @customer.fname%>
+    <%= f.hidden_field :customer_lname, :value => @customer.lname%>
+    <div class="wrapper">
+      <div class="steponeform">
+        <table>
+          <tr>
+            <td><%= f.label :loantype, "Select the Type of Loan for the customer."  %></td>
+            <td><%= select(:stepone, :loantype, Stepone::LOANTYPE)%></td>
+          </tr>
+          <tr>
+            <td><%= f.label :lender, "Select the Lender for the customer." %></td>
+            <td><%= select(:stepone, :lender, Stepone::LENDERS)%></td>
+          </tr>
+          <tr>
+            <td><%= f.label :downpayment, "Enter the down payment amount in USD($)."%></td>
+            <td><%= f.text_field :downpayment %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :complete, "Check this box when this step can be successfully marked Complete."%></td>
+            <td><%= f.check_box :complete%></td>
+          </tr>
+          <tr><%= f.submit "Save Stepone"%></tr>
+        </table>
+      </div>
+    </div>
 <% end %>

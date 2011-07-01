@@ -65,10 +65,11 @@
     <%= f.hidden_field :step, :value => 0 %>
     <%= f.hidden_field :inprogress, :value => false %>
     <%= f.hidden_field :createdby, :value => current_user.email %>
+    <%= f.hidden_field :details, :value => "New Customer" %>
     <div class="wrapper">
       <div class="createformbottom" id="createformbottom">
         <h2>Financial Information</h2>
-        <table style="margin-left: auto;margin-right: auto;">
+        <table style="margin-left: auto;margin-right: auto;text-align: left;">
           <tr>
             <td><%= f.label :salesman, 'Salesman' %></td>
             <td><%= select(:customer, :salesman, Customer::SALESMEN)%></td>

@@ -5,7 +5,6 @@ class CustomersController < ApplicationController
   helper_method :sort_column, :sort_direction
   def index
     @customers = Customer.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @customers }
@@ -89,16 +88,27 @@ class CustomersController < ApplicationController
                       if Stepnine.find_by_customer_id(params[:id]).destroy
                         if Stepten.find_by_customer_id(params[:id]).destroy
                           #good job on making it this far!
+                          redirect_to root_path
                         end
+                        redirect_to root_path
                       end
+                      redirect_to root_path
                     end
+                    redirect_to root_path
                   end
+                  redirect_to root_path
                 end
+                redirect_to root_path
               end
+              redirect_to root_path
             end
+            redirect_to root_path
           end
+          redirect_to root_path
         end
+        redirect_to root_path
       end
+      redirect_to root_path
     end
     respond_to do |format|
       format.html { redirect_to(root_path) }
@@ -106,7 +116,23 @@ class CustomersController < ApplicationController
     end
   end
 
+  def detail
+    Customer.find_by_id(params[:id]).update_attribute(:details, params[:details])
+    redirect_to root_path
+  end
+
   def currentstep
+    if params[:step] === "0. Customer Info"
+      redirect_to customer_path
+    elsif params[:step] === "1. Structure and Submit"
+      redirect_to step1_path(params[:id])
+    else
+      redirect_to root_path
+    end
+
+  end
+
+  def not_used
     @step = Customer.find_by_id(params[:id]).step
     if @step === nil
       Customer.find_by_id(params[:id]).update_attribute(:step, 0)

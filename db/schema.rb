@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110629164138) do
+ActiveRecord::Schema.define(:version => 20110701205111) do
 
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(:version => 20110629164138) do
     t.string   "createdby"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "details"
+    t.string   "lender"
   end
 
   create_table "flowlists", :force => true do |t|
@@ -122,14 +124,12 @@ ActiveRecord::Schema.define(:version => 20110629164138) do
     t.integer  "customer_id"
     t.string   "customer_fname"
     t.string   "customer_lname"
-    t.string   "title"
-    t.boolean  "creditcheck"
-    t.integer  "credexp"
-    t.integer  "credequ"
-    t.integer  "credtra"
     t.boolean  "complete"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "downpayment"
+    t.string   "loantype"
+    t.string   "lender"
   end
 
   create_table "stepsevens", :force => true do |t|
