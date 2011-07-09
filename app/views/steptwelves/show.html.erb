@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Customer:</b>
+  <%= @steptwelf.customer_id %>
+</p>
+
+<p>
+  <b>Customer fname:</b>
+  <%= @steptwelf.customer_fname %>
+</p>
+
+<p>
+  <b>Customer lname:</b>
+  <%= @steptwelf.customer_lname %>
+</p>
+
+<p>
+  <b>Updated by:</b>
+  <%= @steptwelf.updated_by %>
+</p>
+
+<p>
+  <b>Complete:</b>
+  <%= @steptwelf.complete %>
+</p>
+
+
+<%= link_to 'Edit', edit_steptwelf_path(@steptwelf) %> |
+<%= link_to 'Back', steptwelves_path %>

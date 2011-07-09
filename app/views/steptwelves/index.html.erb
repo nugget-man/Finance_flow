@@ -1,0 +1,31 @@
+<h1>Listing steptwelves</h1>
+
+<table>
+  <tr>
+    <th>Customer</th>
+    <th>Customer fname</th>
+    <th>Customer lname</th>
+    <th>Updated by</th>
+    <th>Complete</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @steptwelves.each do |steptwelf| %>
+  <tr>
+    <td><%= steptwelf.customer_id %></td>
+    <td><%= steptwelf.customer_fname %></td>
+    <td><%= steptwelf.customer_lname %></td>
+    <td><%= steptwelf.updated_by %></td>
+    <td><%= steptwelf.complete %></td>
+    <td><%= link_to 'Show', steptwelf %></td>
+    <td><%= link_to 'Edit', edit_steptwelf_path(steptwelf) %></td>
+    <td><%= link_to 'Destroy', steptwelf, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Steptwelve', new_steptwelf_path %>

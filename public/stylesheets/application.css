@@ -1,3 +1,8 @@
+html, body{
+    height:100%;
+    overflow:hidden;
+}
+
 .search th .asc {
   background-image:url("/images/asc_arrow.gif");
   background-repeat:no-repeat;
@@ -87,7 +92,10 @@
     border-color:#fff;
     width:180px;
 }
-
+.maincontainer{
+        height:100%;
+    overflow:auto;
+}
 .maincontent
 {
 	width: 90em;
@@ -96,6 +104,7 @@
     position:fixed;
     left: 50%;
     margin: 0 0 0 -45em;
+
 }
 .wrapper{
     width:70em;

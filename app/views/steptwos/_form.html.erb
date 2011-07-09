@@ -1,18 +1,27 @@
-<%= simple_form_for(@steptwo) do |f| %>
-  <%= f.error_notification %>
-  <h2>Initial Conditions Received</h2>
-
-  <p>If this step is incomplete, click the button below without checking the box. Once the box has been checked, this step will be complete. </p>
-  <p>This step is completed when all of the initial conditions have been received.</p>
-  <div class="inputs">
-    <%= f.input :customer_id,    :as => :hidden, :input_html => {:value => @customer.id}     %>
-    <%= f.input :customer_fname, :as => :hidden, :input_html => {:value => @customer.fname}  %>
-    <%= f.input :customer_lname, :as => :hidden, :input_html => {:value => @customer.lname}  %>
-    <%= f.input :title,          :as => :hidden, :input_html => {:value => 'In Progress'} %>
-    <%= f.input :complete %>
-  </div>
-
-  <div class="actions">
-    <%= f.button :submit %>
-  </div>
+<p>For Customer: <%= @customer.fname%> <%= @customer.lname%></p>
+<% form_for(@steptwo) do |f|%>
+    <% if @steptwo.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@steptwo.errors.count, "error") %> prohibited this customer from being saved:</h2>
+          <ul>
+            <% @steptwo.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <%= f.hidden_field :customer_id, :value => @customer.id%>
+    <%= f.hidden_field :customer_fname, :value => @customer.fname%>
+    <%= f.hidden_field :customer_lname, :value => @customer.lname%>
+    <div class="wrapper">
+      <div class="steponeform">
+        <table style="margin-left: auto;margin-right: auto;text-align: left;">
+          <tr>
+            <td><%= f.label :complete, "Check this box when this step can be successfully marked Complete."%></td>
+            <td><%= f.check_box :complete%></td>
+          </tr>
+          <tr><%= f.submit "Save Stage Two"%></tr>
+        </table>
+      </div>
+    </div>
 <% end %>

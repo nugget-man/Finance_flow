@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110701205111) do
+ActiveRecord::Schema.define(:version => 20110708224810) do
 
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""
@@ -58,6 +58,16 @@ ActiveRecord::Schema.define(:version => 20110701205111) do
     t.datetime "updated_at"
   end
 
+  create_table "flowones", :force => true do |t|
+    t.integer  "flowlist_id"
+    t.string   "flowlist_name"
+    t.integer  "customer_id"
+    t.string   "customer_fname"
+    t.string   "customer_lname"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -86,6 +96,16 @@ ActiveRecord::Schema.define(:version => 20110701205111) do
     t.datetime "updated_at"
   end
 
+  create_table "stepelevens", :force => true do |t|
+    t.integer  "customer_id"
+    t.string   "customer_fname"
+    t.string   "customer_lname"
+    t.string   "updated_by"
+    t.boolean  "complete"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "stepfives", :force => true do |t|
     t.integer  "customer_id"
     t.string   "customer_fname"
@@ -101,6 +121,16 @@ ActiveRecord::Schema.define(:version => 20110701205111) do
     t.string   "customer_fname"
     t.string   "customer_lname"
     t.string   "title"
+    t.boolean  "complete"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stepfourteens", :force => true do |t|
+    t.integer  "customer_id"
+    t.string   "customer_fname"
+    t.string   "customer_lname"
+    t.string   "updated_by"
     t.boolean  "complete"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -166,11 +196,31 @@ ActiveRecord::Schema.define(:version => 20110701205111) do
     t.datetime "updated_at"
   end
 
+  create_table "stepthirteens", :force => true do |t|
+    t.integer  "customer_id"
+    t.string   "customer_fname"
+    t.string   "customer_lname"
+    t.string   "updated_by"
+    t.boolean  "complete"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "stepthrees", :force => true do |t|
     t.integer  "customer_id"
     t.string   "customer_fname"
     t.string   "customer_lname"
     t.string   "title"
+    t.boolean  "complete"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "steptwelves", :force => true do |t|
+    t.integer  "customer_id"
+    t.string   "customer_fname"
+    t.string   "customer_lname"
+    t.string   "updated_by"
     t.boolean  "complete"
     t.datetime "created_at"
     t.datetime "updated_at"

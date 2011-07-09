@@ -122,17 +122,45 @@ class CustomersController < ApplicationController
   end
 
   def currentstep
-    if params[:step] === "0. Customer Info"
+    if params[:step] == "0. Customer Info"
       redirect_to customer_path
-    elsif params[:step] === "1. Structure and Submit"
+    elsif params[:step] == "1. Structure and Submit"
       redirect_to step1_path(params[:id])
+    elsif params[:step] == "2. Approved"
+      redirect_to step2_path(params[:id])
+    elsif params[:step] == "3. GFE Received"
+      redirect_to step3_path(params[:id])
+    elsif params[:step] == "4. GFE Sent w/ Conditions"
+      redirect_to step4_path(params[:id])
+    elsif params[:step] == "5. Title Ordered"
+      redirect_to step5_path(params[:id])
+    elsif params[:step] == "6. Bids Ordered/Received"
+      redirect_to step6_path(params[:id])
+    elsif params[:step] == "7. Title Received"
+      redirect_to step7_path(params[:id])
+    elsif params[:step] == "8. Underwriting Started/Completed"
+      redirect_to step8_path(params[:id])
+    elsif params[:step] == "9. Survey Ordered"
+      redirect_to step9_path(params[:id])
+    elsif params[:step] == "10. Specs & Bids Signed"
+      redirect_to step10_path(params[:id])
+    elsif params[:step] == "11. Appraisal Ordered"
+      redirect_to step11_path(params[:id])
+    elsif params[:step] == "12. Final Conditions"
+      redirect_to step12_path(params[:id])
+    elsif params[:step] == "13. Final Underwriting"
+      redirect_to step13_path(params[:id])
+    elsif params[:step] == "14. Schedule Close"
+      redirect_to step14_path(params[:id])
+    elsif params[:step] == "Next Step"
+      redirect_to financenext_path(params[:id])
     else
       redirect_to root_path
     end
 
   end
 
-  def not_used
+  def finance
     @step = Customer.find_by_id(params[:id]).step
     if @step === nil
       Customer.find_by_id(params[:id]).update_attribute(:step, 0)

@@ -1,4 +1,13 @@
 Financeflow2::Application.routes.draw do
+  resources :stepfourteens
+
+  resources :stepthirteens
+
+  resources :steptwelves
+
+  resources :stepelevens
+
+  get 'financenext/:id' => 'customers#finance', :as => 'financenext'
   get 'finance/:id' => 'customers#currentstep', :as => 'finance'
   put 'details/:id' => 'customers#detail', :as => 'details'
   get 'step1/:id' => 'stepones#new', :as => 'step1'
@@ -21,6 +30,14 @@ Financeflow2::Application.routes.draw do
   get 'step9/edit/:id' => 'stepnines#edit', :as => 'step9edit'
   get 'step10/:id' => 'steptens#new', :as => 'step10'
   get 'step10/edit/:id' => 'steptens#edit', :as => 'step10edit'
+  get 'step11/:id' => 'stepelevens#new', :as => 'step11'
+  get 'step11/edit/:id' => 'stepelevens#edit', :as => 'step11edit'
+  get 'step12/:id' => 'steptwelves#new', :as => 'step12'
+  get 'step12/edit/:id' => 'steptwelves#edit', :as => 'step12edit'
+  get 'step13/:id' => 'stepthirteens#new', :as => 'step13'
+  get 'step13/edit/:id' => 'stepthirteens#edit', :as => 'step13edit'
+  get 'step14/:id' => 'stepfourteens#new', :as => 'step14'
+  get 'step14/edit/:id' => 'stepfourteens#edit', :as => 'step14edit'
   resources :steptens
   resources :stepnines
   resources :stepeights

@@ -1,14 +1,14 @@
-<%= simple_form_for(@stepten) do |f| %>
+<%= simple_form_for(@stepeleven) do |f| %>
   <%= f.error_notification %>
-  <h2>Specs and Bids Signed</h2>
+  <h2>11. Appraisal Ordered</h2>
 
 
-  <p>Complete this step when the customer's Specs and Bids have been signed and submitted.</p>
+  <p>Complete this step when the customer's Appraisal has been ordered and received. </p>
   <div class="inputs">
     <%= f.input :customer_id,    :as => :hidden, :input_html => {:value => @customer.id}     %>
     <%= f.input :customer_fname, :as => :hidden, :input_html => {:value => @customer.fname}  %>
     <%= f.input :customer_lname, :as => :hidden, :input_html => {:value => @customer.lname}  %>
-    <%= f.input :title,          :as => :hidden, :input_html => {:value => 'In Progress'} %>
+    <%= f.input :updated_by, :as => :hidden, :input_html => {:value => current_user.email}   %>
     <%= f.input :complete %>
   </div>
 
