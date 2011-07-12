@@ -16,6 +16,7 @@ class CustomersController < ApplicationController
   # GET /customers/1.xml
   def show
     @customer = Customer.find(params[:id])
+    @comment = @customer.comments.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -123,34 +124,49 @@ class CustomersController < ApplicationController
 
   def currentstep
     if params[:step] == "0. Customer Info"
+      Customer.find_by_id(params[:id]).update_attribute(:step, "Customer Info")
       redirect_to customer_path
     elsif params[:step] == "1. Structure and Submit"
+      Customer.find_by_id(params[:id]).update_attribute(:step, "Structure and Submit")
       redirect_to step1_path(params[:id])
     elsif params[:step] == "2. Approved"
+      Customer.find_by_id(params[:id]).update_attribute(:step, "Approved")
       redirect_to step2_path(params[:id])
     elsif params[:step] == "3. GFE Received"
+      Customer.find_by_id(params[:id]).update_attribute(:step, "GFE Received")
       redirect_to step3_path(params[:id])
     elsif params[:step] == "4. GFE Sent w/ Conditions"
+      Customer.find_by_id(params[:id]).update_attribute(:step, "GFE Sent w/ Conditions")
       redirect_to step4_path(params[:id])
     elsif params[:step] == "5. Title Ordered"
+      Customer.find_by_id(params[:id]).update_attribute(:step, "Title Ordered")
       redirect_to step5_path(params[:id])
     elsif params[:step] == "6. Bids Ordered/Received"
+      Customer.find_by_id(params[:id]).update_attribute(:step, "Bids Ordered/Received")
       redirect_to step6_path(params[:id])
     elsif params[:step] == "7. Title Received"
+      Customer.find_by_id(params[:id]).update_attribute(:step, "Title Received")
       redirect_to step7_path(params[:id])
-    elsif params[:step] == "8. Underwriting Started/Completed"
+    elsif params[:step] == "8. UW Started/Completed"
+      Customer.find_by_id(params[:id]).update_attribute(:step, "UW Started/Completed")
       redirect_to step8_path(params[:id])
     elsif params[:step] == "9. Survey Ordered"
+      Customer.find_by_id(params[:id]).update_attribute(:step, "Survey Ordered")
       redirect_to step9_path(params[:id])
     elsif params[:step] == "10. Specs & Bids Signed"
+      Customer.find_by_id(params[:id]).update_attribute(:step, "Specs & Bids Signed")
       redirect_to step10_path(params[:id])
     elsif params[:step] == "11. Appraisal Ordered"
+      Customer.find_by_id(params[:id]).update_attribute(:step, "Appraisal Ordered")
       redirect_to step11_path(params[:id])
     elsif params[:step] == "12. Final Conditions"
+      Customer.find_by_id(params[:id]).update_attribute(:step, "Final Conditions")
       redirect_to step12_path(params[:id])
     elsif params[:step] == "13. Final Underwriting"
+      Customer.find_by_id(params[:id]).update_attribute(:step, "Final Underwriting")
       redirect_to step13_path(params[:id])
     elsif params[:step] == "14. Schedule Close"
+      Customer.find_by_id(params[:id]).update_attribute(:step, "Schedule Close")
       redirect_to step14_path(params[:id])
     elsif params[:step] == "Next Step"
       redirect_to financenext_path(params[:id])
@@ -361,7 +377,7 @@ class CustomersController < ApplicationController
 
 
   def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
+    %w[desc asc].include?(params[:direction]) ? params[:direction] : "desc"
   end
   def finance_button
     @customer = customer.id

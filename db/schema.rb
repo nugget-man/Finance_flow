@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20110708224810) do
     t.string   "homephoneco"
     t.string   "cellphoneco"
     t.string   "salesman"
-    t.integer  "step"
+    t.string   "step"
     t.boolean  "inprogress"
     t.boolean  "prelimcondmet"
     t.string   "prelimcondmetuser"
@@ -46,24 +46,13 @@ ActiveRecord::Schema.define(:version => 20110708224810) do
     t.integer  "equ"
     t.integer  "tra"
     t.string   "createdby"
+    t.string   "details"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "details"
-    t.string   "lender"
   end
 
   create_table "flowlists", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "flowones", :force => true do |t|
-    t.integer  "flowlist_id"
-    t.string   "flowlist_name"
-    t.integer  "customer_id"
-    t.string   "customer_fname"
-    t.string   "customer_lname"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

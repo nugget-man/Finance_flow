@@ -56,6 +56,7 @@ Financeflow2::Application.routes.draw do
   resources :flowlists
   resources :customers do
     get :currentstep, :on => :member
+    resources :comments
   end
   resources :comments, :path_prefix => '/:commentable_type/:commentable_id'
   root :to => "customers#index"

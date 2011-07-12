@@ -1,6 +1,6 @@
 html, body{
     height:100%;
-    overflow:hidden;
+    overflow:auto;
 }
 
 .search th .asc {
@@ -93,15 +93,15 @@ html, body{
     width:180px;
 }
 .maincontainer{
-        height:100%;
-    overflow:auto;
+    /*    height:100%;
+    overflow:auto; */
 }
 .maincontent
 {
 	width: 90em;
 	text-align: center;
     background-color:#fff;
-    position:fixed;
+    position:absolute;
     left: 50%;
     margin: 0 0 0 -45em;
 

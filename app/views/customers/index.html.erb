@@ -17,7 +17,7 @@
       <th><span><%= sortable "updated_at", "Updated at" %>&nbsp;</span></th>
       <th><span><%= sortable "salesman", "Salesman" %>&nbsp;</span></th>
       <th>Current Status</th>
-      <th>Lender</th>
+      <th><span><%= sortable "stepone.lender", "Lender"%> </span></th>
       <th>Finance Steps</th>
     </tr>
     <tbody>
@@ -25,15 +25,15 @@
         <tr>
           <td><%= link_to customer.id, customer %></td>
           <td><%= link_to customer.lname.capitalize + ", " + customer.fname.capitalize, customer %></td>
-          <td><%= customer.step %></td>
+          <% if customer.updated_at.minus_with_coercion(Time.now)/-86400 > 0.22 %>
+          <td style="background-color:#f28080"><%= customer.step %></td>
+          <% else %>
+          <td><%= customer.step%></td>
+          <% end %>
           <td><%= customer.updated_at.to_formatted_s(:db)  %></td>
           <td><%= customer.salesman.capitalize %></td>
-          <% if customer.updated_at.minus_with_coercion(Time.now)/-86400 > 0.22%>
-          <td style="background-color:#f28080"><%= customer.details %></td>
-          <% else %>
-          <td><%= customer.details %></td>
-          <% end %>
-          <% if stepone = Stepone.find_by_customer_id(customer.id) %>
+          <td style="max-width:150px;"><%= customer.details %></td>
+          <% if stepone = customer.stepone %>
           <td><%= stepone.lender%></td>
           <%else%>
           <td>N/A</td>

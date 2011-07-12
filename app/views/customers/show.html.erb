@@ -63,3 +63,8 @@
 
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
 <%= link_to 'Back', customers_path %>
+<%- form_for [@customer,  @comment] do |f|-%>
+  <%= f.text_area :comment, :size => "20x20" -%>
+  <%= f.submit -%>
+<%- end -%>
+

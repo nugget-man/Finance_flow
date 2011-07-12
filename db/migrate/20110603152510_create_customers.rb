@@ -12,7 +12,7 @@ class CreateCustomers < ActiveRecord::Migration
       t.string :homephoneco
       t.string :cellphoneco
       t.string :salesman
-      t.integer :step
+      t.string :step
       t.boolean :inprogress
       t.boolean :prelimcondmet
       t.string  :prelimcondmetuser
@@ -20,6 +20,7 @@ class CreateCustomers < ActiveRecord::Migration
       t.integer :equ
       t.integer :tra
       t.string :createdby
+      t.string :details
       t.timestamps
     end
   end

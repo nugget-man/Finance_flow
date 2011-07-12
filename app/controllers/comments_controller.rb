@@ -2,11 +2,11 @@
   class CommentsController < ApplicationController
     before_filter :authenticate_user!, :load_commentable
     def create
-      @comment = @commentable.comments.build(:title => params[:title], :comment => params[:comment])
-      @comment.user = current_user
+      @customer = @customer.find params[:id]
+      @comment = @customer.comments.new params[:comment]
       respond_to do |format|
         if @comment.save
-          format.html { redirect_to @commentable }
+          format.html { redirect_to @customer}
         else
           format.html { render :action => 'new' }
         end
@@ -19,4 +19,3 @@
       @commentable = params[:commentable_type].camelize.constantize.find(params[:commentable_id])
     end
   end
-
