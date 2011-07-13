@@ -1,0 +1,18 @@
+<%= simple_form_for(@ticket) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :title %>
+    <%= f.input :content %>
+    <%= f.input :accepted %>
+    <%= f.input :inprogress %>
+    <%= f.input :completed %>
+    <%= f.input :closed %>
+    <%= f.input :user_id %>
+    <%= f.input :submitter %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

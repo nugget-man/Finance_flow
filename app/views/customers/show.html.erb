@@ -63,8 +63,9 @@
 
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
 <%= link_to 'Back', customers_path %>
-<%- form_for [@customer,  @comment] do |f|-%>
-  <%= f.text_area :comment, :size => "20x20" -%>
-  <%= f.submit -%>
-<%- end -%>
-
+<%= form_tag "/customers/add_new_comment" do %>
+    <%= hidden_field_tag "id", @customer.id %>
+    <%= text_area_tag "comment[comment]" %>
+    <%= submit_tag "Post Comment" %>
+<% end %>
+<%= disqus_combo(:color => "blue", :hide_mods => false, :num_items => 20)  %>

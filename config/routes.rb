@@ -1,4 +1,6 @@
 Financeflow2::Application.routes.draw do
+  resources :tickets
+
   resources :stepfourteens
 
   resources :stepthirteens
@@ -49,6 +51,7 @@ Financeflow2::Application.routes.draw do
   resources :steptwos
   resources :stepones
   devise_for :users
+  match "/customers/add_new_comment" => "customers#add_new_comment", :as => "add_new_comment_to_customers", :via => [:post]
   get "remote/new"
   get "remote/back"
   get "remote/forward"

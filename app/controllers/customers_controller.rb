@@ -16,7 +16,7 @@ class CustomersController < ApplicationController
   # GET /customers/1.xml
   def show
     @customer = Customer.find(params[:id])
-    @comment = @customer.comments.new
+    @comment = @customer.comments
 
     respond_to do |format|
       format.html # show.html.erb
@@ -72,6 +72,11 @@ class CustomersController < ApplicationController
         format.xml  { render :xml => @customer.errors, :status => :unprocessable_entity }
       end
     end
+  end
+  def add_new_comment
+      customer = Customer.find(params[:id])
+      customer.comments << Comment.new(params[:comment])
+      redirect_to :action => :show, :id => customer
   end
 
   # DELETE /customers/1
