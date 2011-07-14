@@ -16,8 +16,11 @@ class SteptensController < ApplicationController
   # GET /steptens/1
   # GET /steptens/1.xml
   def show
-    @stepten = Stepten.find(params[:id])
-
+    @stepten = Stepten.find_by_customer_id(params[:id])
+    @customer = Customer.find(params[:id])
+    if Comment.find_by_commentable_id_and_title(params[:id],"Specs & Bids Signed")
+      @comments = Comment.find_all_by_commentable_id_and_title(params[:id],"Specs & Bids Signed")
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @stepten }

@@ -16,6 +16,9 @@ class CustomersController < ApplicationController
   # GET /customers/1.xml
   def show
     @customer = Customer.find(params[:id])
+    if Comment.find_by_commentable_id(@customer.id)
+      @comments = Comment.find_all_by_commentable_id(@customer.id)
+    end
     @comment = @customer.comments
 
     respond_to do |format|
@@ -73,6 +76,7 @@ class CustomersController < ApplicationController
       end
     end
   end
+
   def add_new_comment
       customer = Customer.find(params[:id])
       customer.comments << Comment.new(params[:comment])
@@ -132,247 +136,315 @@ class CustomersController < ApplicationController
       Customer.find_by_id(params[:id]).update_attribute(:step, "Customer Info")
       redirect_to customer_path
     elsif params[:step] == "1. Structure and Submit"
-      Customer.find_by_id(params[:id]).update_attribute(:step, "Structure and Submit")
-      redirect_to step1_path(params[:id])
+      if step = Stepone.find_by_customer_id(params[:id])
+        redirect_to step1show_path(step.customer_id)
+      else
+        Customer.find_by_id(params[:id]).update_attribute(:step, "Structure and Submit")
+        redirect_to step1_path(params[:id])
+      end
+
     elsif params[:step] == "2. Approved"
-      Customer.find_by_id(params[:id]).update_attribute(:step, "Approved")
-      redirect_to step2_path(params[:id])
+      if step = Steptwo.find_by_customer_id(params[:id])
+        redirect_to step2show_path(step.customer_id)
+      else
+        Customer.find_by_id(params[:id]).update_attribute(:step, "Approved")
+        redirect_to step2_path(params[:id])
+      end
+
     elsif params[:step] == "3. GFE Received"
-      Customer.find_by_id(params[:id]).update_attribute(:step, "GFE Received")
-      redirect_to step3_path(params[:id])
+      if step = Stepthree.find_by_customer_id(params[:id])
+        redirect_to step3show_path(step.customer_id)
+      else
+        Customer.find_by_id(params[:id]).update_attribute(:step, "GFE Received")
+        redirect_to step3_path(params[:id])
+      end
+
     elsif params[:step] == "4. GFE Sent w/ Conditions"
-      Customer.find_by_id(params[:id]).update_attribute(:step, "GFE Sent w/ Conditions")
-      redirect_to step4_path(params[:id])
+      if step = Stepfour.find_by_customer_id(params[:id])
+        redirect_to step4show_path(step.customer_id)
+      else
+        Customer.find_by_id(params[:id]).update_attribute(:step, "GFE Sent w/ Conditions")
+        redirect_to step4_path(params[:id])
+      end
+
     elsif params[:step] == "5. Title Ordered"
-      Customer.find_by_id(params[:id]).update_attribute(:step, "Title Ordered")
-      redirect_to step5_path(params[:id])
+      if step = Stepfive.find_by_customer_id(params[:id])
+        redirect_to step5show_path(step.customer_id)
+      else
+        Customer.find_by_id(params[:id]).update_attribute(:step, "Title Ordered")
+        redirect_to step5_path(params[:id])
+      end
+
     elsif params[:step] == "6. Bids Ordered/Received"
-      Customer.find_by_id(params[:id]).update_attribute(:step, "Bids Ordered/Received")
-      redirect_to step6_path(params[:id])
+      if step = Stepsix.find_by_customer_id(params[:id])
+        redirect_to step6show_path(step.customer_id)
+      else
+        Customer.find_by_id(params[:id]).update_attribute(:step, "Bids Ordered/Received")
+        redirect_to step6_path(params[:id])
+      end
+
     elsif params[:step] == "7. Title Received"
-      Customer.find_by_id(params[:id]).update_attribute(:step, "Title Received")
-      redirect_to step7_path(params[:id])
+      if step = Stepseven.find_by_customer_id(params[:id])
+        redirect_to step7show_path(step.customer_id)
+      else
+        Customer.find_by_id(params[:id]).update_attribute(:step, "Title Received")
+        redirect_to step7_path(params[:id])
+      end
+
     elsif params[:step] == "8. UW Started/Completed"
-      Customer.find_by_id(params[:id]).update_attribute(:step, "UW Started/Completed")
-      redirect_to step8_path(params[:id])
+      if step = Stepeight.find_by_customer_id(params[:id])
+        redirect_to step8show_path(step.customer_id)
+      else
+        Customer.find_by_id(params[:id]).update_attribute(:step, "UW Started/Completed")
+        redirect_to step8_path(params[:id])
+      end
+
     elsif params[:step] == "9. Survey Ordered"
-      Customer.find_by_id(params[:id]).update_attribute(:step, "Survey Ordered")
-      redirect_to step9_path(params[:id])
+      if step = Stepnine.find_by_customer_id(params[:id])
+        redirect_to step9show_path(step.customer_id)
+      else
+        Customer.find_by_id(params[:id]).update_attribute(:step, "Survey Ordered")
+        redirect_to step9_path(params[:id])
+      end
+
     elsif params[:step] == "10. Specs & Bids Signed"
-      Customer.find_by_id(params[:id]).update_attribute(:step, "Specs & Bids Signed")
-      redirect_to step10_path(params[:id])
+      if step = Stepten.find_by_customer_id(params[:id])
+        redirect_to step10show_path(step.customer_id)
+      else
+        Customer.find_by_id(params[:id]).update_attribute(:step, "Specs & Bids Signed")
+        redirect_to step10_path(params[:id])
+      end
+
     elsif params[:step] == "11. Appraisal Ordered"
-      Customer.find_by_id(params[:id]).update_attribute(:step, "Appraisal Ordered")
-      redirect_to step11_path(params[:id])
+      if step = Stepeleven.find_by_customer_id(params[:id])
+        redirect_to step11show_path(step.customer_id)
+      else
+        Customer.find_by_id(params[:id]).update_attribute(:step, "Appraisal Ordered")
+        redirect_to step11_path(params[:id])
+      end
+
     elsif params[:step] == "12. Final Conditions"
-      Customer.find_by_id(params[:id]).update_attribute(:step, "Final Conditions")
-      redirect_to step12_path(params[:id])
+      if step = Steptwelve.find_by_customer_id(params[:id])
+        redirect_to step12show_path(step.customer_id)
+      else
+        Customer.find_by_id(params[:id]).update_attribute(:step, "Final Conditions")
+        redirect_to step12_path(params[:id])
+      end
+
     elsif params[:step] == "13. Final Underwriting"
-      Customer.find_by_id(params[:id]).update_attribute(:step, "Final Underwriting")
-      redirect_to step13_path(params[:id])
+      if step = Stepthirteen.find_by_customer_id(params[:id])
+        redirect_to step13show_path(step.customer_id)
+      else
+        Customer.find_by_id(params[:id]).update_attribute(:step, "Final Underwriting")
+        redirect_to step13_path(params[:id])
+      end
+
     elsif params[:step] == "14. Schedule Close"
-      Customer.find_by_id(params[:id]).update_attribute(:step, "Schedule Close")
-      redirect_to step14_path(params[:id])
-    elsif params[:step] == "Next Step"
-      redirect_to financenext_path(params[:id])
+      if step = Stepfourteen.find_by_customer_id(params[:id])
+        redirect_to step14show_path(step.customer_id)
+      else
+        Customer.find_by_id(params[:id]).update_attribute(:step, "Schedule Close")
+        redirect_to step14_path(params[:id])
+      end
+
     else
       redirect_to root_path
     end
 
   end
 
-  def finance
-    @step = Customer.find_by_id(params[:id]).step
-    if @step === nil
-      Customer.find_by_id(params[:id]).update_attribute(:step, 0)
-      redirect_to home_path
-    elsif @step === 0
-      Customer.find_by_id(params[:id]).update_attribute(:step, 1)
-      redirect_to step1_path(params[:id])
-    elsif @step === 1
-      if @stepone = Stepone.find_by_customer_id(params[:id])
-        @title = @stepone[:title]
-      end
-      if @title === 'In Progress'
-        if @complete = @stepone[:complete]
-          Stepone.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
-          Customer.find_by_id(params[:id]).update_attribute(:step, 2)
-          redirect_to step2_path(params[:id])
-        else
-          redirect_to step1edit_path(params[:id])
-        end
-      elsif @title === 'Complete'
-        Customer.find_by_id(params[:id]).update_attribute(:step, 2)
-        redirect_to step2_path(params[:id])
-      else
-        redirect_to step1_path(params[:id])
-      end
-    elsif @step === 2
-      if @steptwo = Steptwo.find_by_customer_id(params[:id])
-        @title = @steptwo[:title]
-      end
-      if @title === 'In Progress'
-        if @complete = @steptwo[:complete]
-          Steptwo.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
-          Customer.find_by_id(params[:id]).update_attribute(:step, 3)
-          redirect_to step3_path(params[:id])
-        else
-          redirect_to step2edit_path(params[:id])
-        end
-      elsif @title === 'Complete'
-        Customer.find_by_id(params[:id]).update_attribute(:step, 3)
-        redirect_to step3_path(params[:id])
-      else
-        redirect_to step2_path(params[:id])
-      end
-    elsif @step === 3
-      if @stepthree = Stepthree.find_by_customer_id(params[:id])
-        @title = @stepthree[:title]
-      end
-      if @title === 'In Progress'
-        if @complete = @stepthree[:complete]
-          Stepthree.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
-          Customer.find_by_id(params[:id]).update_attribute(:step, 4)
-          redirect_to step4_path(params[:id])
-        else
-          redirect_to step3edit_path(params[:id])
-        end
-      elsif @title === 'Complete'
-        Customer.find_by_id(params[:id]).update_attribute(:step, 4)
-        redirect_to step4_path(params[:id])
-      else
-        redirect_to step3_path(params[:id])
-      end
-    elsif @step === 4
-      if @stepfour = Stepfour.find_by_customer_id(params[:id])
-        @title = @stepfour[:title]
-      end
-      if @title === 'In Progress'
-        if @complete = @stepfour[:complete]
-          Stepfour.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
-          Customer.find_by_id(params[:id]).update_attribute(:step, 5)
-          redirect_to step5_path(params[:id])
-        else
-          redirect_to step4edit_path(params[:id])
-        end
-      elsif @title === 'Complete'
-        Customer.find_by_id(params[:id]).update_attribute(:step, 5)
-        redirect_to step5_path(params[:id])
-      else
-        redirect_to step4_path(params[:id])
-      end
-    elsif @step === 5
-      if @stepfive = Stepfive.find_by_customer_id(params[:id])
-        @title = @stepfive[:title]
-      end
-      if @title === 'In Progress'
-        if @complete = @stepfive[:complete]
-          Stepfive.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
-          Customer.find_by_id(params[:id]).update_attribute(:step, 6)
-          redirect_to step6_path(params[:id])
-        else
-          redirect_to step5edit_path(params[:id])
-        end
-      elsif @title === 'Complete'
-        Customer.find_by_id(params[:id]).update_attribute(:step, 6)
-        redirect_to step6_path(params[:id])
-      else
-        redirect_to step5_path(params[:id])
-      end
-    elsif @step === 6
-      if @stepsix = Stepsix.find_by_customer_id(params[:id])
-        @title = @stepsix[:title]
-      end
-      if @title === 'In Progress'
-        if @complete = @stepsix[:complete]
-          Stepsix.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
-          Customer.find_by_id(params[:id]).update_attribute(:step, 7)
-          redirect_to step7_path(params[:id])
-        else
-          redirect_to step6edit_path(params[:id])
-        end
-      elsif @title === 'Complete'
-        Customer.find_by_id(params[:id]).update_attribute(:step, 7)
-        redirect_to step7_path(params[:id])
-      else
-        redirect_to step6_path(params[:id])
-      end
-    elsif @step === 7
-      if @stepseven = Stepseven.find_by_customer_id(params[:id])
-        @title = @stepseven[:title]
-      end
-      if @title === 'In Progress'
-        if @complete = @stepseven[:complete]
-          Stepseven.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
-          Customer.find_by_id(params[:id]).update_attribute(:step, 8)
-          redirect_to step8_path(params[:id])
-        else
-          redirect_to step7edit_path(params[:id])
-        end
-      elsif @title === 'Complete'
-        Customer.find_by_id(params[:id]).update_attribute(:step, 8)
-        redirect_to step8_path(params[:id])
-      else
-        redirect_to step7_path(params[:id])
-      end
-    elsif @step === 8
-      if @stepeight = Stepeight.find_by_customer_id(params[:id])
-        @title = @stepeight[:title]
-      end
-      if @title === 'In Progress'
-        if @complete = @stepeight[:complete]
-          Stepeight.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
-          Customer.find_by_id(params[:id]).update_attribute(:step, 9)
-          redirect_to step9_path(params[:id])
-        else
-          redirect_to step8edit_path(params[:id])
-        end
-      elsif @title === 'Complete'
-        Customer.find_by_id(params[:id]).update_attribute(:step, 9)
-        redirect_to step9_path(params[:id])
-      else
-        redirect_to step8_path(params[:id])
-      end
-    elsif @step === 9
-      if @stepnine = Stepnine.find_by_customer_id(params[:id])
-        @title = @stepnine[:title]
-      end
-      if @title === 'In Progress'
-        if @complete = @stepnine[:complete]
-          Stepone.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
-          Customer.find_by_id(params[:id]).update_attribute(:step, 10)
-          redirect_to step10_path(params[:id])
-        else
-          redirect_to step9edit_path(params[:id])
-        end
-      elsif @title === 'Complete'
-        Customer.find_by_id(params[:id]).update_attribute(:step, 10)
-        redirect_to step10_path(params[:id])
-      else
-        redirect_to step9_path(params[:id])
-      end
-    elsif @step === 10
-      if @stepten = Stepten.find_by_customer_id(params[:id])
-        @title = @stepten[:title]
-      end
-      if @title === 'In Progress'
-        if @complete = @stepten[:complete]
-          Stepten.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
-          Customer.find_by_id(params[:id]).update_attribute(:step, 99)
-          redirect_to root_path
-        else
-          redirect_to step10edit_path(params[:id])
-        end
-      elsif @title === 'Complete'
-        Customer.find_by_id(params[:id]).update_attribute(:step, 99)
-        redirect_to home_path
-      else
-        redirect_to step10_path(params[:id])
-      end
-    elsif @step === 99
-      redirect_to home_path
-    end
-  end
+#  def finance
+#    @step = Customer.find_by_id(params[:id]).step
+#    if @step === nil
+#      Customer.find_by_id(params[:id]).update_attribute(:step, 0)
+#      redirect_to home_path
+#    elsif @step === 0
+#      Customer.find_by_id(params[:id]).update_attribute(:step, 1)
+#      redirect_to step1_path(params[:id])
+#    elsif @step === 1
+#      if @stepone = Stepone.find_by_customer_id(params[:id])
+#        @title = @stepone[:title]
+#      end
+#      if @title === 'In Progress'
+#        if @complete = @stepone[:complete]
+#          Stepone.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
+#          Customer.find_by_id(params[:id]).update_attribute(:step, 2)
+#          redirect_to step2_path(params[:id])
+#        else
+#          redirect_to step1edit_path(params[:id])
+#        end
+#      elsif @title === 'Complete'
+#        Customer.find_by_id(params[:id]).update_attribute(:step, 2)
+#        redirect_to step2_path(params[:id])
+#      else
+#        redirect_to step1_path(params[:id])
+#      end
+#    elsif @step === 2
+#      if @steptwo = Steptwo.find_by_customer_id(params[:id])
+#        @title = @steptwo[:title]
+#      end
+#      if @title === 'In Progress'
+#        if @complete = @steptwo[:complete]
+#          Steptwo.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
+#          Customer.find_by_id(params[:id]).update_attribute(:step, 3)
+#          redirect_to step3_path(params[:id])
+#        else
+#          redirect_to step2edit_path(params[:id])
+#        end
+#      elsif @title === 'Complete'
+#        Customer.find_by_id(params[:id]).update_attribute(:step, 3)
+#        redirect_to step3_path(params[:id])
+#      else
+#        redirect_to step2_path(params[:id])
+#      end
+#    elsif @step === 3
+#      if @stepthree = Stepthree.find_by_customer_id(params[:id])
+#        @title = @stepthree[:title]
+#      end
+#      if @title === 'In Progress'
+#        if @complete = @stepthree[:complete]
+#          Stepthree.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
+#          Customer.find_by_id(params[:id]).update_attribute(:step, 4)
+#          redirect_to step4_path(params[:id])
+#        else
+#          redirect_to step3edit_path(params[:id])
+#        end
+#      elsif @title === 'Complete'
+#        Customer.find_by_id(params[:id]).update_attribute(:step, 4)
+#        redirect_to step4_path(params[:id])
+#      else
+#        redirect_to step3_path(params[:id])
+#      end
+#    elsif @step === 4
+#      if @stepfour = Stepfour.find_by_customer_id(params[:id])
+#        @title = @stepfour[:title]
+#      end
+#      if @title === 'In Progress'
+#        if @complete = @stepfour[:complete]
+#          Stepfour.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
+#          Customer.find_by_id(params[:id]).update_attribute(:step, 5)
+#          redirect_to step5_path(params[:id])
+#        else
+#          redirect_to step4edit_path(params[:id])
+#        end
+#      elsif @title === 'Complete'
+#        Customer.find_by_id(params[:id]).update_attribute(:step, 5)
+#        redirect_to step5_path(params[:id])
+#      else
+#        redirect_to step4_path(params[:id])
+#      end
+#    elsif @step === 5
+#      if @stepfive = Stepfive.find_by_customer_id(params[:id])
+#        @title = @stepfive[:title]
+#      end
+#      if @title === 'In Progress'
+#        if @complete = @stepfive[:complete]
+#          Stepfive.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
+#          Customer.find_by_id(params[:id]).update_attribute(:step, 6)
+#          redirect_to step6_path(params[:id])
+#        else
+#          redirect_to step5edit_path(params[:id])
+#        end
+#      elsif @title === 'Complete'
+#        Customer.find_by_id(params[:id]).update_attribute(:step, 6)
+#        redirect_to step6_path(params[:id])
+#      else
+#        redirect_to step5_path(params[:id])
+#      end
+#    elsif @step === 6
+#      if @stepsix = Stepsix.find_by_customer_id(params[:id])
+#        @title = @stepsix[:title]
+#      end
+#      if @title === 'In Progress'
+#        if @complete = @stepsix[:complete]
+#          Stepsix.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
+#          Customer.find_by_id(params[:id]).update_attribute(:step, 7)
+#          redirect_to step7_path(params[:id])
+#        else
+#          redirect_to step6edit_path(params[:id])
+#        end
+#      elsif @title === 'Complete'
+#        Customer.find_by_id(params[:id]).update_attribute(:step, 7)
+#        redirect_to step7_path(params[:id])
+#      else
+#        redirect_to step6_path(params[:id])
+#      end
+#    elsif @step === 7
+#      if @stepseven = Stepseven.find_by_customer_id(params[:id])
+#        @title = @stepseven[:title]
+#      end
+#      if @title === 'In Progress'
+#        if @complete = @stepseven[:complete]
+#          Stepseven.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
+#          Customer.find_by_id(params[:id]).update_attribute(:step, 8)
+#          redirect_to step8_path(params[:id])
+#        else
+#          redirect_to step7edit_path(params[:id])
+#        end
+#      elsif @title === 'Complete'
+#        Customer.find_by_id(params[:id]).update_attribute(:step, 8)
+#        redirect_to step8_path(params[:id])
+#      else
+#        redirect_to step7_path(params[:id])
+#      end
+#    elsif @step === 8
+#      if @stepeight = Stepeight.find_by_customer_id(params[:id])
+#        @title = @stepeight[:title]
+#      end
+#      if @title === 'In Progress'
+#        if @complete = @stepeight[:complete]
+#          Stepeight.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
+#          Customer.find_by_id(params[:id]).update_attribute(:step, 9)
+#          redirect_to step9_path(params[:id])
+#        else
+#          redirect_to step8edit_path(params[:id])
+#        end
+#      elsif @title === 'Complete'
+#        Customer.find_by_id(params[:id]).update_attribute(:step, 9)
+#        redirect_to step9_path(params[:id])
+#      else
+#        redirect_to step8_path(params[:id])
+#      end
+#    elsif @step === 9
+#      if @stepnine = Stepnine.find_by_customer_id(params[:id])
+#        @title = @stepnine[:title]
+#      end
+#      if @title === 'In Progress'
+#        if @complete = @stepnine[:complete]
+#          Stepone.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
+#          Customer.find_by_id(params[:id]).update_attribute(:step, 10)
+#          redirect_to step10_path(params[:id])
+#        else
+#          redirect_to step9edit_path(params[:id])
+#        end
+#      elsif @title === 'Complete'
+#        Customer.find_by_id(params[:id]).update_attribute(:step, 10)
+#        redirect_to step10_path(params[:id])
+#      else
+#        redirect_to step9_path(params[:id])
+#      end
+#    elsif @step === 10
+#      if @stepten = Stepten.find_by_customer_id(params[:id])
+#        @title = @stepten[:title]
+#      end
+#      if @title === 'In Progress'
+#        if @complete = @stepten[:complete]
+#          Stepten.find_by_customer_id(params[:id]).update_attribute(:title, 'Complete')
+#          Customer.find_by_id(params[:id]).update_attribute(:step, 99)
+#          redirect_to root_path
+#        else
+#          redirect_to step10edit_path(params[:id])
+#        end
+#      elsif @title === 'Complete'
+#        Customer.find_by_id(params[:id]).update_attribute(:step, 99)
+#        redirect_to home_path
+#      else
+#        redirect_to step10_path(params[:id])
+#      end
+#    elsif @step === 99
+#      redirect_to home_path
+#    end
+#  end
 
   private
 

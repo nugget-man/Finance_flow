@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110708224810) do
+ActiveRecord::Schema.define(:version => 20110713214642) do
 
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""
@@ -221,6 +221,19 @@ ActiveRecord::Schema.define(:version => 20110708224810) do
     t.string   "customer_lname"
     t.string   "title"
     t.boolean  "complete"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tickets", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.boolean  "accepted"
+    t.boolean  "inprogress"
+    t.boolean  "completed"
+    t.boolean  "closed"
+    t.integer  "user_id"
+    t.string   "submitter"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

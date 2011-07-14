@@ -19,6 +19,9 @@ class User < ActiveRecord::Base
   def is?(role)
     roles.include?(role.to_s)
   end
+  def role?(role)
+    return self.roles.find_by_name(role).try(:name) == role.to_s
+  end
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
 end

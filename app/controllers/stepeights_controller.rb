@@ -16,8 +16,11 @@ class StepeightsController < ApplicationController
   # GET /stepeights/1
   # GET /stepeights/1.xml
   def show
-    @stepeight = Stepeight.find(params[:id])
-
+    @stepeight = Stepeight.find_by_customer_id(params[:id])
+    @customer = Customer.find(params[:id])
+    if Comment.find_by_commentable_id_and_title(params[:id],"UW Started/Completed")
+      @comments = Comment.find_all_by_commentable_id_and_title(params[:id],"UW Started/Completed")
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @stepeight }

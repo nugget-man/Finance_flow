@@ -14,8 +14,6 @@ gem "cancan"
 gem "acts_as_commentable"
 gem "thin"
 gem "passenger"
-gem "disqus"
-
 # Use unicorn as the web server
 # gem 'unicorn'
 

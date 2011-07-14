@@ -15,8 +15,11 @@ class StepthreesController < ApplicationController
   # GET /stepthrees/1
   # GET /stepthrees/1.xml
   def show
-    @stepthree = Stepthree.find(params[:id])
-
+    @stepthree = Stepthree.find_by_customer_id(params[:id])
+    @customer = Customer.find(params[:id])
+    if Comment.find_by_commentable_id_and_title(params[:id],"GFE Received")
+      @comments = Comment.find_all_by_commentable_id_and_title(params[:id],"GFE Received")
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @stepthree }
@@ -37,7 +40,7 @@ class StepthreesController < ApplicationController
   # GET /stepthrees/1/edit
   def edit
     @stepthree = Stepthree.find_by_customer_id(params[:id])
-    @customer = Customer.find_by_id(params[:id])
+    @customer = Customer.find_by_id(@stepone.customer_id)
   end
 
   # POST /stepthrees

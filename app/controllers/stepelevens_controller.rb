@@ -15,8 +15,11 @@ class StepelevensController < ApplicationController
   # GET /stepelevens/1
   # GET /stepelevens/1.xml
   def show
-    @stepeleven = Stepeleven.find(params[:id])
-
+    @stepeleven = Stepeleven.find_by_customer_id(params[:id])
+    @customer = Customer.find(params[:id])
+    if Comment.find_by_commentable_id_and_title(params[:id],"Appraisal Ordered")
+      @comments = Comment.find_all_by_commentable_id_and_title(params[:id],"Appraisal Ordered")
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @stepeleven }

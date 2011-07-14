@@ -15,11 +15,14 @@ class SteptwelvesController < ApplicationController
   # GET /steptwelves/1
   # GET /steptwelves/1.xml
   def show
-    @steptwelf = Steptwelve.find(params[:id])
-
+    @steptwelve = Steptwelve.find_by_customer_id(params[:id])
+    @customer = Customer.find(params[:id])
+    if Comment.find_by_commentable_id_and_title(params[:id],"Final Conditions")
+      @comments = Comment.find_all_by_commentable_id_and_title(params[:id],"Final Conditions")
+    end
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @steptwelf }
+      format.xml  { render :xml => @steptwelve }
     end
   end
 
@@ -37,22 +40,22 @@ class SteptwelvesController < ApplicationController
 
   # GET /steptwelves/1/edit
   def edit
-    @steptwelf = Steptwelve.find(params[:id])
+    @steptwelve = Steptwelve.find(params[:id])
     @customer = Customer.find_by_id(params[:id])
   end
 
   # POST /steptwelves
   # POST /steptwelves.xml
   def create
-    @steptwelf = Steptwelve.new(params[:steptwelf])
+    @steptwelve = Steptwelve.new(params[:steptwelve])
 
     respond_to do |format|
-      if @steptwelf.save
-        format.html { redirect_to(@steptwelf, :notice => 'Steptwelve was successfully created.') }
-        format.xml  { render :xml => @steptwelf, :status => :created, :location => @steptwelf }
+      if @steptwelve.save
+        format.html { redirect_to(@steptwelve, :notice => 'Steptwelve was successfully created.') }
+        format.xml  { render :xml => @steptwelve, :status => :created, :location => @steptwelve }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @steptwelf.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @steptwelve.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -60,15 +63,15 @@ class SteptwelvesController < ApplicationController
   # PUT /steptwelves/1
   # PUT /steptwelves/1.xml
   def update
-    @steptwelf = Steptwelve.find(params[:id])
+    @steptwelve = Steptwelve.find(params[:id])
 
     respond_to do |format|
-      if @steptwelf.update_attributes(params[:steptwelf])
-        format.html { redirect_to(@steptwelf, :notice => 'Steptwelve was successfully updated.') }
+      if @steptwelve.update_attributes(params[:steptwelve])
+        format.html { redirect_to(@steptwelve, :notice => 'Steptwelve was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @steptwelf.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @steptwelve.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -76,8 +79,8 @@ class SteptwelvesController < ApplicationController
   # DELETE /steptwelves/1
   # DELETE /steptwelves/1.xml
   def destroy
-    @steptwelf = Steptwelve.find(params[:id])
-    @steptwelf.destroy
+    @steptwelve = Steptwelve.find(params[:id])
+    @steptwelve.destroy
 
     respond_to do |format|
       format.html { redirect_to(steptwelves_url) }

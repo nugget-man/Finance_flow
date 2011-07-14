@@ -1,71 +1,85 @@
-<p id="notice"><%= notice %></p>
-<div style="margin-left:auto; margin-right:auto; text-align:center; width:40em">
-  <table style="text-align:left">
-    <tr>
-      <td class="tableright"><b>Borrower Name: |</b></td><td><%= @customer.lname.capitalize %>, <%= @customer.fname.capitalize %></td>
-    </tr>
-    <tr>
-      <td class="tableright"><b>Borrower Email: |</b></td><td><%= @customer.email%></td>
-    </tr>
-    <tr>
-      <td class="tableright"><b>Borrower Home Phone: |</b></td><td><%= @customer.homephone%></td>
-    </tr>
-    <tr>
-      <td class="tableright"><b>Borrower Cell Phone: |</b></td><td><%= @customer.cellphone%></td>
-    </tr>
-    <tr>
-      <td class="tableright"><b>Coborrower Name: |</b></td><td><%= @customer.lnameco.capitalize %>, <%= @customer.fnameco.capitalize %></td>
-    </tr>
-    <tr>
-      <td class="tableright"><b>Coborrower Email: |</b></td><td><%= @customer.emailco%></td>
-    </tr>
-    <tr>
-      <td class="tableright"><b>Coborrower Home Phone: |</b></td><td><%= @customer.homephoneco%></td>
-    </tr>
-    <tr>
-      <td class="tableright"><b>Coborrower Cell Phone: |</b></td><td><%= @customer.cellphoneco%></td>
-    </tr>
-    <tr>
-      <td class="tableright"><b>Current Step: |</b></td><td><%= @customer.step %></td>
-    </tr>
-    <tr>
-      <% if @customer.inprogress %>
-          <td class="tableright"><b>Step In-Progress: |</b><br></td><td>Yes</td>
-      <% else %>
-          <td class="tableright"><b>Step In-Progress: |</b><br></td><td>No</td>
-      <% end %>
-    </tr>
-    <tr>
-      <% if @customer.prelimcondmet %>
-          <td class="tableright"><b>Preliminary Conditions Met: |</b><br></td><td>Yes</td>
-      <% else %>
-          <td class="tableright"><b>Preliminary Conditions Met: |</b><br></td><td>No</td>
-      <% end %>
-    </tr>
-    <tr>
-      <% if @customer.prelimcondmetuser %>
-          <td class="tableright"><b>Conditions Signed by: |</b><br></td><td>@customer.prelimcondmetuser</td>
-      <% else %>
-          <td class="tableright"><b>Conditions Signed by: |</b><br></td><td>N/A</td>
-      <% end %>
-    </tr>
-    <tr>
-      <td class="tableright"><b>Salesman: |</b></td><td><%= @customer.salesman %></td>
-    </tr>
-  </table>
-</div>
-<h2><%= link_to 'Move this customer into Finance!', finance_path(@customer.id)%></h2>
-<p>Update Customer Status</p>
-<% form_tag details_path(@customer.id), :method => 'put' do%>
-    <%= text_field_tag "details"%>
-    <%= submit_tag "Save", :name => nil%>
-<% end %>
-
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
-<%= form_tag "/customers/add_new_comment" do %>
-    <%= hidden_field_tag "id", @customer.id %>
-    <%= text_area_tag "comment[comment]" %>
-    <%= submit_tag "Post Comment" %>
-<% end %>
-<%= disqus_combo(:color => "blue", :hide_mods => false, :num_items => 20)  %>
+<table style="margin-left: auto;margin-right: auto;text-align: left;"><tr>
+  <td>
+    <p id="notice"><%= notice %></p>
+    <div style="margin-left:auto; margin-right:auto; text-align:center; width:40em">
+      <table style="text-align:left">
+        <tr>
+          <td class="tableright"><b>Borrower Name: |</b></td><td><%= @customer.lname.capitalize %>, <%= @customer.fname.capitalize %></td>
+        </tr>
+        <tr>
+          <td class="tableright"><b>Borrower Email: |</b></td><td><%= @customer.email%></td>
+        </tr>
+        <tr>
+          <td class="tableright"><b>Borrower Home Phone: |</b></td><td><%= @customer.homephone%></td>
+        </tr>
+        <tr>
+          <td class="tableright"><b>Borrower Cell Phone: |</b></td><td><%= @customer.cellphone%></td>
+        </tr>
+        <tr>
+          <td class="tableright"><b>Coborrower Name: |</b></td><td><%= @customer.lnameco.capitalize %>, <%= @customer.fnameco.capitalize %></td>
+        </tr>
+        <tr>
+          <td class="tableright"><b>Coborrower Email: |</b></td><td><%= @customer.emailco%></td>
+        </tr>
+        <tr>
+          <td class="tableright"><b>Coborrower Home Phone: |</b></td><td><%= @customer.homephoneco%></td>
+        </tr>
+        <tr>
+          <td class="tableright"><b>Coborrower Cell Phone: |</b></td><td><%= @customer.cellphoneco%></td>
+        </tr>
+        <tr>
+          <td class="tableright"><b>Current Step: |</b></td><td><%= @customer.step %></td>
+        </tr>
+        <tr>
+          <% if @customer.inprogress %>
+              <td class="tableright"><b>Step In-Progress: |</b><br></td><td>Yes</td>
+          <% else %>
+              <td class="tableright"><b>Step In-Progress: |</b><br></td><td>No</td>
+          <% end %>
+        </tr>
+        <tr>
+          <% if @customer.prelimcondmet %>
+              <td class="tableright"><b>Preliminary Conditions Met: |</b><br></td><td>Yes</td>
+          <% else %>
+              <td class="tableright"><b>Preliminary Conditions Met: |</b><br></td><td>No</td>
+          <% end %>
+        </tr>
+        <tr>
+          <% if @customer.prelimcondmetuser %>
+              <td class="tableright"><b>Conditions Signed by: |</b><br></td><td><%=@customer.prelimcondmetuser%></td>
+          <% else %>
+              <td class="tableright"><b>Conditions Signed by: |</b><br></td><td>N/A</td>
+          <% end %>
+        </tr>
+        <tr>
+          <td class="tableright"><b>Salesman: |</b></td><td><%= @customer.salesman %></td>
+        </tr>
+      </table>
+    </div>
+  </td>
+  <td>
+    <p>Update Customer Status</p>
+    <% form_tag details_path(@customer.id), :method => 'put' do%>
+        <%= text_field_tag "details"%>
+        <%= submit_tag "Save", :name => nil%>
+    <% end %>
+    <!-- Comments Box -->
+    <%= link_to 'Edit', edit_customer_path(@customer) %> |
+    <%= link_to 'Back', customers_path %>
+    <%= form_tag "/customers/add_new_comment" do %>
+        <%= hidden_field_tag "id", @customer.id %>
+        <%= hidden_field_tag "comment[commentable_id]", @customer.id %>
+        <%= hidden_field_tag "comment[title]", "Customer Details" %>
+        <%= hidden_field_tag "comment[user_id]", current_user.id %>
+        <%= text_area_tag "comment[comment]" %><br>
+        <%= submit_tag "Post Comment" %>
+    <% end %><br>
+    <% if @comments %>
+    <% @comments.each do |comment|   %>
+        <%= comment.title %><br>
+        <%= comment.comment %><br>
+        <%= User.find(comment.user_id).email %><br><br>
+    <%end%>
+    <% end %>
+  </td>
+</tr></table>
