@@ -146,6 +146,31 @@ html, body{
 .tableright {
     text-align: right;
 }
+
+.commentshow{
+    border: 2px solid #add1da;
+    background-color: #D6E8EC;
+    text-align: center;
+    font-family: fantasy;
+    margin-bottom: 4px;
+    padding:0, 10px, 0, 10px;
+    max-width: 20em;
+}
+.commenttitle{
+    color:#1F3D7A;
+    text-decoration: underline;
+    font-weight: 800;
+    font-variant:small-caps;
+    font-size:150%;
+}
+.commentbody{
+
+}
+.commentuser{
+    text-decoration: overline;
+    font-size:90%;
+    color:#81878E;
+}
 .roundedcornr_box_283612 {
    background: #ffffff;
 }

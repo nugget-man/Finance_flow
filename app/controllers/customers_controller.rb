@@ -133,7 +133,6 @@ class CustomersController < ApplicationController
 
   def currentstep
     if params[:step] == "0. Customer Info"
-      Customer.find_by_id(params[:id]).update_attribute(:step, "Customer Info")
       redirect_to customer_path
     elsif params[:step] == "1. Structure and Submit"
       if step = Stepone.find_by_customer_id(params[:id])

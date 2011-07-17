@@ -29,11 +29,11 @@ class StepfourteensController < ApplicationController
   # GET /stepfourteens/new
   # GET /stepfourteens/new.xml
   def new
-    @stepthirteen = Stepthirteen.new
+    @stepfourteen = Stepfourteen.new
     @customer = Customer.find_by_id(params[:id])
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @stepthirteen }
+      format.xml  { render :xml => @stepfourteen }
 
     end
   end
@@ -51,8 +51,7 @@ class StepfourteensController < ApplicationController
 
     respond_to do |format|
       if @stepfourteen.save
-        format.html { redirect_to(@stepfourteen, :notice => 'Stepfourteen was successfully created.') }
-        format.xml  { render :xml => @stepfourteen, :status => :created, :location => @stepfourteen }
+        format.html { redirect_to(root_path, :notice => 'Stepfourteen was successfully created.') }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @stepfourteen.errors, :status => :unprocessable_entity }

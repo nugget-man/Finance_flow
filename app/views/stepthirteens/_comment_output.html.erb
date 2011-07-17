@@ -1,0 +1,5 @@
+<% comments.each do |comment|   %>
+    <span class="commenttitle"><%= comment.title %></span><br>
+    <span class="commentbody"><%= comment.comment %></span><br>
+    <span class="commentuser"><%= User.find(comment.user_id).email %></span><br>
+<%end%>

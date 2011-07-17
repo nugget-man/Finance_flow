@@ -51,8 +51,7 @@ class StepthirteensController < ApplicationController
 
     respond_to do |format|
       if @stepthirteen.save
-        format.html { redirect_to(@stepthirteen, :notice => 'Stepthirteen was successfully created.') }
-        format.xml  { render :xml => @stepthirteen, :status => :created, :location => @stepthirteen }
+        format.html { redirect_to(root_path, :notice => 'Stepthirteen was successfully created.') }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @stepthirteen.errors, :status => :unprocessable_entity }

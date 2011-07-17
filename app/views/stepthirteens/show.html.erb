@@ -40,14 +40,11 @@
         <%= text_area_tag "comment[comment]" %><br>
         <%= submit_tag "Post Comment" %>
     <% end %><br>
+  <div class="commentshow">
 <% if @comments%>
-    <% @comments.each do |comment|   %>
-        <%= comment.title %><br>
-        <%= comment.comment %><br>
-        <%= User.find(comment.user_id).email %><br><br>
-    <%end%>
-<% end %>
+    <%= render :partial => 'comment_output', :comments => @comments %>
+<% end %></div>
     </td>
 </tr></table>
-<%= link_to 'Edit', step13edit_path(params[:id])%> |
+<%= link_to 'Edit', step14edit_path(params[:id])%> |
 <%= link_to 'Back', root_path %>

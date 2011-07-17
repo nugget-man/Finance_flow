@@ -1,5 +1,5 @@
 <table style="margin-left: auto;margin-right: auto;text-align: left;"><tr>
-  <td>
+  <td style="vertical-align:top">
     <p id="notice"><%= notice %></p>
     <div style="margin-left:auto; margin-right:auto; text-align:center; width:40em">
       <table style="text-align:left">
@@ -75,10 +75,13 @@
         <%= submit_tag "Post Comment" %>
     <% end %><br>
     <% if @comments %>
+
     <% @comments.each do |comment|   %>
-        <%= comment.title %><br>
-        <%= comment.comment %><br>
-        <%= User.find(comment.user_id).email %><br><br>
+      <div class="commentshow">
+        <span class="commenttitle"><%= comment.title %><br>               </span>
+        <span class="commentbody"><%= comment.comment %><br>             </span>
+        <span class="commentuser"><%= User.find(comment.user_id).email %></span>
+      </div>
     <%end%>
     <% end %>
   </td>

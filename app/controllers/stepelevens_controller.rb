@@ -50,8 +50,7 @@ class StepelevensController < ApplicationController
 
     respond_to do |format|
       if @stepeleven.save
-        format.html { redirect_to(@stepeleven, :notice => 'Stepeleven was successfully created.') }
-        format.xml  { render :xml => @stepeleven, :status => :created, :location => @stepeleven }
+        format.html { redirect_to(root_path, :notice => 'Stepeleven was successfully created.') }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @stepeleven.errors, :status => :unprocessable_entity }
