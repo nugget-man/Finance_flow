@@ -1,6 +1,6 @@
 <%= simple_form_for(@stepfive) do |f| %>
   <%= f.error_notification %>
-  <h2>Good Faith Estimate Signed and Sent</h2>
+  <h2>5. Title Ordered</h2>
   <h3>for customer: <%= @customer.fname.capitalize %> <%= @customer.lname.capitalize%> </h3>
 
   <p>If this step is incomplete, click the button below without checking the box. Once the box has been checked, this step will be complete. </p>
@@ -9,7 +9,6 @@
     <%= f.input :customer_id,    :as => :hidden, :input_html => {:value => @customer.id}     %>
     <%= f.input :customer_fname, :as => :hidden, :input_html => {:value => @customer.fname}  %>
     <%= f.input :customer_lname, :as => :hidden, :input_html => {:value => @customer.lname}  %>
-    <%= f.input :title,          :as => :hidden, :input_html => {:value => 'In Progress'} %>
     <%= f.input :complete %>
   </div>
 
