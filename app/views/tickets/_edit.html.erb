@@ -6,6 +6,10 @@
     <%= f.input :submitter %>
     <%= f.input :type, :collection => Ticket::TYPES, :prompt => "Choose a problem type:"%>
     <%= f.input :content %>
+    <%= f.input :accepted %>
+    <%= f.input :inprogress %>
+    <%= f.input :completed %>
+    <%= f.input :closed %>
 
   </div>
 

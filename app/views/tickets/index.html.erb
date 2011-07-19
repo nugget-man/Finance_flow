@@ -1,33 +1,27 @@
 <h1>Listing tickets</h1>
 
-<table>
+<table class="search" style="margin-left: auto;margin-right: auto;text-align: left; width: 30em;">
   <tr>
+    <th>Ticket ID#</th>
     <th>Title</th>
-    <th>Content</th>
-    <th>Accepted</th>
-    <th>Inprogress</th>
-    <th>Completed</th>
-    <th>Closed</th>
-    <th>User</th>
     <th>Submitter</th>
+
+    <% if user_signed_in? %>
     <th></th>
     <th></th>
-    <th></th>
+    <% end %>
   </tr>
 
 <% @tickets.each do |ticket| %>
   <tr>
-    <td><%= ticket.title %></td>
-    <td><%= ticket.content %></td>
-    <td><%= ticket.accepted %></td>
-    <td><%= ticket.inprogress %></td>
-    <td><%= ticket.completed %></td>
-    <td><%= ticket.closed %></td>
-    <td><%= ticket.user_id %></td>
+    <td><%= link_to ticket.id, ticket %></td>
+    <td><%= link_to ticket.title, ticket %></td>
     <td><%= ticket.submitter %></td>
-    <td><%= link_to 'Show', ticket %></td>
+
+    <% if user_signed_in? %>
     <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
     <td><%= link_to 'Destroy', ticket, :confirm => 'Are you sure?', :method => :delete %></td>
+    <%end%>
   </tr>
 <% end %>
 </table>
