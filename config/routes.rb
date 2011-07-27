@@ -1,14 +1,6 @@
 Financeflow2::Application.routes.draw do
-  resources :tickets
 
-  resources :stepfourteens
-
-  resources :stepthirteens
-
-  resources :steptwelves
-
-  resources :stepelevens
-
+  put 'timer/:id' => 'customers#timer_set', :as => 'timer_set'
   get 'financenext/:id' => 'customers#finance', :as => 'financenext'
   get 'finance/:id' => 'customers#currentstep', :as => 'finance'
   put 'details/:id' => 'customers#detail', :as => 'details'
@@ -54,6 +46,9 @@ Financeflow2::Application.routes.draw do
   get 'step14/new/:id' => 'stepfourteens#show', :as => 'step14show'
   get 'step14/:id' => 'stepfourteens#new', :as => 'step14'
   get 'step14/edit/:id' => 'stepfourteens#edit', :as => 'step14edit'
+  get 'step15/new/:id' => 'stepfifteens#show', :as => 'step15show'
+  get 'step15/:id' => 'stepfifteens#new', :as => 'step15'
+  get 'step15/edit/:id' => 'stepfifteens#edit', :as => 'step15edit'
   resources :steptens
   resources :stepnines
   resources :stepeights
@@ -64,13 +59,18 @@ Financeflow2::Application.routes.draw do
   resources :stepthrees
   resources :steptwos
   resources :stepones
+  resources :stepfifteens
+  resources :tickets
+  resources :stepfourteens
+  resources :stepthirteens
+  resources :steptwelves
+  resources :stepelevens
   devise_for :users#,  :controllers => { :registrations => "users/registrations" }
   match "/customers/add_new_comment" => "customers#add_new_comment", :as => "add_new_comment_to_customers", :via => [:post]
   get "remote/new"
   get "remote/back"
   get "remote/forward"
   get "remote/home"
-  resources :flowlists
   resources :customers do
     get :currentstep, :on => :member
     resources :comments

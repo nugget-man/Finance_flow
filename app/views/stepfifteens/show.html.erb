@@ -1,0 +1,53 @@
+
+
+<table style="margin-left: auto;margin-right: auto;text-align: left;"><tr>
+  <td>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Customer:</b>
+  <%= @stepfifteen.customer_id %>
+</p>
+
+<p>
+  <b>Customer fname:</b>
+  <%= @stepfifteen.customer_fname %>
+</p>
+
+<p>
+  <b>Customer lname:</b>
+  <%= @stepfifteen.customer_lname %>
+</p>
+
+<p>
+  <b>Complete:</b>
+  <%= @stepfifteen.complete %>
+</p></td>
+<td>
+
+
+<p>Update Customer Status</p>
+    <% form_tag details_path(@customer.id), :method => 'put' do%>
+        <%= text_field_tag "details"%>
+        <%= submit_tag "Save", :name => nil%>
+    <% end %>
+    <!-- Comments Box -->
+    <%= form_tag "/customers/add_new_comment" do %>
+        <%= hidden_field_tag "id", @customer.id %>
+        <%= hidden_field_tag "comment[commentable_id]", @customer.id %>
+        <%= hidden_field_tag "comment[title]", "Closed" %>
+        <%= hidden_field_tag "comment[user_id]", current_user.id %>
+        <%= text_area_tag "comment[comment]" %><br>
+        <%= submit_tag "Post Comment" %>
+    <% end %><br>
+<% if @comments%>
+    <% @comments.each do |comment|   %>
+        <%= comment.title %><br>
+        <%= comment.comment %><br>
+        <%= User.find(comment.user_id).email %><br><br>
+    <%end%>
+<% end %>
+    </td>
+</tr></table>
+<%= link_to 'Edit', step15edit_path(params[:id])%> |
+<%= link_to 'Back', root_path %>

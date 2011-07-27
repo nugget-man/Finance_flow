@@ -1,0 +1,18 @@
+<%= simple_form_for(@stepfifteen) do |f| %>
+  <%= f.error_notification %>
+  <h2>15. Closed</h2>
+
+
+  <p>This step is completed when the customer has been funded and the loan is closed. </p>
+  <div class="inputs">
+    <%= f.input :customer_id,    :as => :hidden, :input_html => {:value => @customer.id}     %>
+    <%= f.input :customer_fname, :as => :hidden, :input_html => {:value => @customer.fname}  %>
+    <%= f.input :customer_lname, :as => :hidden, :input_html => {:value => @customer.lname}  %>
+    <%= f.input :updated_by, :as => :hidden, :input_html => {:value => current_user.email}   %>
+    <%= f.input :completed %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

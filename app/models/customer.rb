@@ -11,7 +11,13 @@ class Customer < ActiveRecord::Base
   has_one :stepeight
   has_one :stepnine
   has_one :stepten
-  STAGES = ['0. Customer Info', '1. Structure and Submit', '2. Approved', '3. GFE Received', '4. GFE Sent w/ Conditions', '5. Title Ordered', '6. Bids Ordered/Received', '7. Title Received', '8. UW Started/Completed', '9. Survey Ordered', '10. Specs & Bids Signed', '11. Appraisal Ordered', '12. Final Conditions', '13. Final Underwriting', '14. Schedule Close']
+  has_one :stepeleven
+  has_one :steptwelve
+  has_one :stepthirteen
+  has_one :stepfourteen
+  has_one :stepfifteen
+  has_one :timer
+  STAGES = ['0. Customer Info', '1. Structure and Submit', '2. Approved', '3. GFE Received', '4. GFE Sent w/ Conditions', '5. Title Ordered', '6. Bids Ordered/Received', '7. Title Received', '8. UW Started/Completed', '9. Survey Ordered', '10. Specs & Bids Signed', '11. Appraisal Ordered', '12. Final Conditions', '13. Final Underwriting', '14. Schedule Close', '15. Closed']
   SALESMEN = ['Purvis', 'Hildreth', 'Turner', 'Conklin']
     def self.search(search)
     if search

@@ -14,6 +14,8 @@ gem "cancan"
 gem "acts_as_commentable"
 gem "thin"
 gem "passenger"
+gem "calendar_date_select", "~> 1.16.3"
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

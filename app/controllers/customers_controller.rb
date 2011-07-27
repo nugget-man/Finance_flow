@@ -49,7 +49,7 @@ class CustomersController < ApplicationController
   # POST /customers.xml
   def create
     @customer = Customer.new(params[:customer])
-
+    Timer.create(:customer_id=>params[:id], :delay=>Date.now.to_i)
     respond_to do |format|
       if @customer.save
         format.html { redirect_to(@customer, :notice => 'Customer was successfully created.') }
@@ -246,10 +246,24 @@ class CustomersController < ApplicationController
         redirect_to step14_path(params[:id])
       end
 
+    elsif params[:step] == "15. Closed"
+      if step = Stepfifteen.find_by_customer_id(params[:id])
+        redirect_to step15show_path(step.customer_id)
+      else
+        Customer.find_by_id(params[:id]).update_attribute(:step, "Closed")
+        redirect_to step15_path(params[:id])
+      end
+
     else
       redirect_to root_path
     end
 
+  end
+
+
+  def timer_set
+    Timer.find_by_customer_id(params[:id]).update_attribute(:delay, params[:delay].to_i)
+    redirect_to root_path
   end
 
 #  def finance

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110718175511) do
+ActiveRecord::Schema.define(:version => 20110727181037) do
 
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""
@@ -91,6 +91,15 @@ ActiveRecord::Schema.define(:version => 20110718175511) do
     t.string   "customer_lname"
     t.string   "updated_by"
     t.boolean  "complete"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stepfifteens", :force => true do |t|
+    t.integer  "customer_id"
+    t.string   "customer_fname"
+    t.string   "customer_lname"
+    t.boolean  "completed"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -237,6 +246,13 @@ ActiveRecord::Schema.define(:version => 20110718175511) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "type"
+  end
+
+  create_table "timers", :force => true do |t|
+    t.integer  "customer_id"
+    t.integer  "delay"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
